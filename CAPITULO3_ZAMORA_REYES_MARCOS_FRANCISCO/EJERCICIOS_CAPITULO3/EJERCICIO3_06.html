@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 3.6 - Registro</title>
+</head>
+<body>
+    <h2>Formulario de Registro</h2>
+    <form action="#" method="post">
+        <p>
+            <input type="text" name="nombre" placeholder="Primer nombre" required autofocus>
+        </p>
+        <p>
+            <input type="text" name="apellido" placeholder="Apellido" required>
+        </p>
+        <p>
+            <input type="email" name="correo" placeholder="Dirección de correo electrónico" required>
+        </p>
+
+        <!-- Pregunta de encuesta opcional oculta en details -->
+        <details>
+            <summary>Encuesta opcional</summary>
+            <p>¿En qué año de la universidad se encuentra?</p>
+            <input type="text" name="ano_universidad" placeholder="Ej. Primer año, Segundo año...">
+        </details>
+
+        <p>
+            <input type="submit" value="Registrarse">
+        </p>
+    </form>
+</body>
+</html>

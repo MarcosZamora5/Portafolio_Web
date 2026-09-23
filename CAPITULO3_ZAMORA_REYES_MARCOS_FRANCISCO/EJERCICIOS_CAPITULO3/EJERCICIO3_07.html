@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 3.7 - Búsqueda Autocomplete</title>
+</head>
+<body>
+    <h2>Búsqueda Simple</h2>
+    <!-- El navegador debe tener el autocompletado habilitado por defecto en forms -->
+    <form action="#" method="get" autocomplete="on">
+        <label for="busqueda">Buscar mes:</label>
+        <!-- type="search" habilita características especiales en algunos navegadores -->
+        <input type="search" id="busqueda" name="q" placeholder="Escriba aquí..." autofocus>
+        
+        <input type="submit" value="Buscar">
+    </form>
+    <p><em>Instrucciones: Prueba escribir "Junio", dale a Buscar. Luego vuelve e intenta escribir "Julio" y dale Buscar. Al escribir la letra "J" nuevamente, el navegador debería sugerirte ambas palabras.</em></p>
+</body>
+</html>

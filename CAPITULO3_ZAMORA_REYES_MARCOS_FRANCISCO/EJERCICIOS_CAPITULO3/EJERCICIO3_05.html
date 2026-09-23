@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 3.5</title>
+</head>
+<body>
+    <!-- a) Elemento meter para calificaciones -->
+    <p>Calificación de alimentos:</p>
+    1 <meter min="1" max="10" value="7"></meter> 10
+
+    <!-- b) Elemento details y summary -->
+    <details>
+        <summary>Resultados de la encuesta</summary>
+        <p>La mayoría de los estudiantes calificaron la comida con un 7 de 10, indicando que es aceptable pero podría mejorar en variedad.</p>
+    </details>
+
+    <!-- c) y d) Input text sin label, con placeholder y autofocus -->
+    <p>Ingrese su nombre:</p>
+    <input type="text" name="primer_nombre" placeholder="Primer nombre" autofocus>
+
+    <!-- e) Elemento datalist para cinco estados -->
+    <p>Seleccione un estado:</p>
+    <input list="estados" name="estado_seleccionado">
+    <datalist id="estados">
+        <option value="Veracruz">
+        <option value="Jalisco">
+        <option value="Nuevo León">
+        <option value="Oaxaca">
+        <option value="Puebla">
+    </datalist>
+
+    <!-- f) Elemento input range del 1 al 100 -->
+    <p>Seleccione un valor:</p>
+    <input type="range" min="1" max="100" name="rango_valor">
+
+    <!-- g) Etiqueta de apertura de formulario sin autocomplete -->
+    <form autocomplete="off">
+        <!-- Contenido del formulario iría aquí -->
+    </form>
+
+    <!-- h) Elemento mark para resaltar el segundo enunciado -->
+    <p>Se pidi&oacute; a los estudiantes que calificaran los alimentos en la cafeter&iacute;a. <mark>En una escala del 1 al 10. El resultado promedio fue 7.</mark></p>
+
+</body>
+</html>

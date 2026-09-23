@@ -1,0 +1,32 @@
+/*Ejercicio 4.9.css*/
+/* Hoja de estilo externa para el ejercicio 4.9 */
+.boton-nav {
+    background-color: LightGray;
+    border: 3px solid DarkGray;
+    width: 200px;
+    text-align: center;
+    padding: 15px;
+    margin: 20px;
+    /* Transición suave para el efecto hover */
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.boton-nav a {
+    color: Black;
+    text-decoration: none;
+    font-family: arial, sans-serif;
+    font-weight: bold;
+    font-size: 1.2em;
+    /* Hace que todo el div sea cliqueable */
+    display: block; 
+}
+
+/* Reglas que cambian cuando el usuario pasa el ratón sobre el botón */
+.boton-nav:hover {
+    background-color: Black;
+    border: 3px solid Red;
+}
+
+.boton-nav:hover a {
+    color: White;
+}

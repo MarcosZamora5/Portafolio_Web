@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 3.8 - Dias de la semana</title>
+</head>
+<body>
+    <h2>Selección de Dia</h2>
+    <form action="#" method="post">
+        <label for="dia">Elija un día de la semana:</label>
+        <!-- El atributo list debe coincidir con el id del datalist -->
+        <input list="diasSemana" id="dia" name="dia_seleccionado" placeholder="Escriba un día...">
+        
+        <datalist id="diasSemana">
+            <option value="Lunes">
+            <option value="Martes">
+            <option value="Miercoles">
+            <option value="Jueves">
+            <option value="Viernes">
+            <option value="Sabado">
+            <option value="Domingo">
+        </datalist>
+        
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>

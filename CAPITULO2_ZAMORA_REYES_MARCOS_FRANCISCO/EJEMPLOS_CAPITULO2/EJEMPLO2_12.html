@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<!-- Fig. 2.12: tabla1.html -->
+<!-- Creacion de una tabla basica -->
+ <html>
+    <head>
+        <meta charset = "utf-8">
+        <title> Una tabla de HTML5 simple </title>
+    </head>
+
+    <body>
+        <!-- La etiqueta <table> abre una tabla -->
+        <table border = "1">
+
+           <!-- La etiqueta <caption> sintetiza el contenido de -->
+           <!-- La tabla (esto ayuda a las personas con discapacidad visual) -->
+            <caption><strong>Tabla de frutas (1era columna) y 
+                sus  precios (2da columna) </strong></caption>
+           
+           <!-- La seccion <thead> aparece primero en la tabla -->
+           <!-- Da formato al area el encabezado de la tabla -->
+            <thead>
+                <tr> <!-- <tr> Inserta una fila en la tabla -->
+                    <th> Fruta </th>
+                    <th> Precio </th>
+                </tr>
+            </thead>
+           
+            <!-- La seccion <tfoot> aparece al ultimo en la tabla -->
+            <!-- Da formato al pie de la tabla -->
+            <tfoot>
+                <tr>
+                    <th> Total </th>
+                    <th> $3.75</th>
+                </tr>
+            </tfoot>
+            
+            <!-- Todo el contenido de la tabla esta encerrado -->
+            <!-- Dentro del elemento <tbody> -->
+            <tbody>
+                <tr>
+                    <td> Manzana </td>
+                    <td> $0.25 </td>
+                </tr>
+                <tr>
+                    <td> Naranja </td>
+                    <td> $0.50 </td>
+                </tr>
+                <tr>
+                    <td> Pl&aacute;tano </td>
+                    <td> $0.50 </td>
+                </tr>
+                <tr>
+                    <td> Pi&ntilde;a </td>
+                    <td> $2.00 </td>
+                </tr>
+            </tbody>
+        </table>    
+    </body>
+ </html>
