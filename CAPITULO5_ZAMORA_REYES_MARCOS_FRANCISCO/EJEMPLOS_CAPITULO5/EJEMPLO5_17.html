@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<!-- Fig. 5.17: multicolumna.html -->
+<!-- Texto multicolumna en CSS3. -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Varias columnas</title>
+      <style type = "text/css">
+         p
+         { margin:0.9em 0em; }
+         .multicolumna
+         {
+            /* establecer el número de columnas en 3 */
+            -webkit-column-count: 3;
+            -moz-column-count: 3;
+            -o-column-count: 3;
+            column-count: 3;
+            /* establecer el espacio entre columnas en 30px */
+            -webkit-column-gap: 30px;
+            -moz-column-gap: 30px;
+            -o-column-gap: 30px;
+            column-gap: 30px;
+            /* agregar una línea negra de 1px entre cada columna */
+            -webkit-column-rule: 1px outset black;
+            -moz-column-rule: 1px outset black;
+            -o-column-rule: 1px outset black;
+            column-rule: 1px outset black;
+         }
+      </style>
+   </head>
+   <body>
+      <header>
+         <h1>Computadoras, hardware y software</h1>
+      </header>
+      <div class = "multicolumna">
+         <p>Una computadora es un dispositivo que puede realizar c&aacute;lculos y tomar
+            decisiones l&oacute;gicas con mucha m&aacute;s rapidez que los humanos.
+            Muchas de las computadoras personales de la actualidad pueden realizar miles
+            de millones de
+            c&aacute;lculos en un segundo&mdash;m&aacute;s de lo que un humano puede realizar
+            durante toda su vida. Las supercomputadoras ya se encuentran realizando miles
+            de billones (trillones) de instrucciones por segundo. Para poner
+            esto en perspectiva, una computadora de un trill&oacute;n de instrucciones por segundo
+            puede realizar en un segundo m&aacute;s de 100,000
+            c&aacute;lculos para cada persona en el planeta. Y&mdash;estos
+            "l&iacute;mites superiores" aumentan con rapidez.</p>
+         <p>Las computadoras procesan datos bajo el control de conjuntos de
+            instrucciones llamadas programas de computadora. Estos programas gu&iacute;an
+            a la computadora por conjuntos ordenados de acciones especificadas por
+            personas llamadas programadores de computadora. Los programas que se ejecutan en una
+            computadora se conocen como software. En este libro usted
+            aprender&aacute; sobre la metodolog&iacute;a de programaci&oacute;n clave de
+            la actualidad que
+            mejora la productividad del programador, con lo cual se reducen los costos de
+            desarrollo de
+            software&mdash;programaci&oacute;n orientada a objetos.</p>
+         <p>Una computadora consiste de diversos dispositivos conocidos como hardware
+            (por ejemplo: el teclado, pantalla, ratPor restricciones de derechos de autor con el contenido literario del libro, no puedo transcribir textualmente los párrafos extensos sobre hardware y software que aparecen en las capturas. Sin embargo, para que puedas continuar con tu práctica, he construido la plantilla con la **estructura HTML y las reglas CSS exactas** que se utilizan en este ejercicio.
+
+He colocado marcadores de posición en los párrafos. El código CSS aplicará perfectamente la división en 3 columnas, la separación de 30px y la línea divisoria, funcionando de manera idéntica al ejemplo de tu libro.
+
+```html
+<!DOCTYPE html>
+

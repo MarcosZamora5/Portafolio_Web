@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<!-- Eje. 5.16 -->
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Ejercicio 5.16</title>
+    <style>
+        .contenido {
+            column-count: 3; /* 3 columnas por defecto para escritorio */
+            column-gap: 20px;
+        }
+        
+        /* Consulta de medios para dispositivos móviles */
+        @media screen and (max-width: 480px) {
+            .contenido {
+                column-count: 1; /* Pasa a 1 columna si la pantalla es de 480px o menos */
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Mi Página Multicolumna Responsiva</h1>
+    <div class="contenido">
+        <p>Este es un texto de prueba. Si estás viendo esta página en el monitor de tu computadora, probablemente estés leyendo el contenido dividido en tres columnas. Sin embargo, si decides reducir el tamaño de la ventana de tu navegador para que tenga una anchura máxima de 480 píxeles (simulando la pantalla de un teléfono inteligente), la consulta de medios que hemos programado entrará en acción.</p>
+        <p>Al activarse dicha consulta, la propiedad column-count cambiará a 1. Esto asegurará que el texto se adapte perfectamente al ancho de tu pantalla móvil, evitando que tengas que hacer zoom o desplazarte horizontalmente para poder leer el artículo completo de forma cómoda.</p>
+    </div>
+</body>
+</html>

@@ -2,53 +2,104 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Capítulo 4 - Ejercicios CSS</title>
+    <title>Menú de Prácticas HTML - Capítulo 4</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 30px; }
-        h1, h2 { color: #000080; }
-        h2 { margin-top: 30px; border-bottom: 1px solid #ccc; padding-bottom: 5px; }
-        ul { list-style-type: disc; }
-        li { margin-bottom: 10px; }
-        a { color: blue; font-weight: bold; text-decoration: none; }
-        a:hover { text-decoration: underline; background-color: #f0f8ff; }
-        .volver { display: inline-block; margin-top: 30px; color: #d35400; }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        .header {
+            background-color: #0056b3;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        h1 { margin: 0 0 10px 0; }
+        h2 { margin: 0; font-size: 1.2em; font-weight: normal; }
+        .container {
+            display: flex;
+            gap: 40px;
+        }
+        .seccion {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            flex: 1;
+        }
+        ul { list-style-type: none; padding: 0; }
+        li {
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        a {
+            text-decoration: none;
+            color: #0056b3;
+            font-weight: bold;
+            display: block;
+        }
+        a:hover {
+            text-decoration: underline;
+            color: #ff6600;
+        }
+        .volver {
+            display: inline-block;
+            margin-top: 20px;
+            color: #d35400;
+        }
     </style>
 </head>
 <body>
 
-    <h1>Capítulo 4: Hojas de Estilo en Cascada (CSS)</h1>
-    
-    <h2>Ejercicios de Autoevaluación y Prácticos</h2>
-    <ul>
-        <li><a href="EJERCICIOS_CAPITULO4/EJERCICIO4_01.html">EJERCICIO4_01: Mediciones de fuentes</a></li>
-        <li><a href="EJERCICIOS_CAPITULO4/EJERCICIO4_02.html">EJERCICIO4_02: Completar oraciones</a></li>
-        <li><a href="EJERCICIOS_CAPITULO4/EJERCICIO4_03.html">EJERCICIO4_03: Modificación de fuente base y color</a></li>
-        <li><a href="EJERCICIOS_CAPITULO4/EJERCICIO4_04.html">EJERCICIO4_04: Imagen de fondo fija y mosaico</a></li>
-        <li><a href="EJERCICIOS_CAPITULO4/EJERCICIO4_05.html">EJERCICIO4_05: Relleno, bordes y márgenes</a></li>
-        <li><a href="EJERCICIOS_CAPITULO4/EJERCICIO4_06.html">EJERCICIO4_06: Desplazamiento relativo</a></li>
-        <li><a href="EJERCICIOS_CAPITULO4/EJERCICIO4_07.html">EJERCICIO4_07: Diseño de columnas con Float</a></li>
-        <li><a href="EJERCICIOS_CAPITULO4/EJERCICIO4_08.html">EJERCICIO4_08: Estilos de vínculos y efecto hover</a></li>
-        <li><a href="EJERCICIOS_CAPITULO4/EJERCICIO4_09.html">EJERCICIO4_09: Botón de navegación (CSS externo)</a></li>
-    </ul>
+    <div class="header">
+        <h1>Portafolio de Prácticas HTML - Capítulo 4</h1>
+        <h2>Alumno: Marcos Francisco Zamora Reyes</h2>
+        <p>Seleccione un archivo para revisarlo. Los archivos se abrirán en una nueva pestaña.</p>
+    </div>
 
-    <h2>Ejemplos Transcritos del Libro</h2>
-    <ul>
-        <li><a href="EJEMPLOS_CAPITULO4/EJEMPLO4_01.html">EJEMPLO4_01: Estilos en línea</a></li>
-        <li><a href="EJEMPLOS_CAPITULO4/EJEMPLO4_03.html">EJEMPLO4_03: Hoja de estilo incrustada</a></li>
-        <li><a href="EJEMPLOS_CAPITULO4/EJEMPLO4_06.html">EJEMPLO4_06: Herencia en CSS</a></li>
-        <li><a href="EJEMPLOS_CAPITULO4/EJEMPLO4_08.html">EJEMPLO4_08: Vinculación de hoja externa</a></li>
-        <li><a href="EJEMPLOS_CAPITULO4/EJEMPLO4_09.html">EJEMPLO4_09: Posicionamiento absoluto</a></li>
-        <li><a href="EJEMPLOS_CAPITULO4/EJEMPLO4_10.html">EJEMPLO4_10: Posicionamiento relativo</a></li>
-        <li><a href="EJEMPLOS_CAPITULO4/EJEMPLO4_11.html">EJEMPLO4_11: Imágenes de fondo y sangría</a></li>
-        <li><a href="EJEMPLOS_CAPITULO4/EJEMPLO4_12.html">EJEMPLO4_12: Dimensiones de elementos</a></li>
-        <li><a href="EJEMPLOS_CAPITULO4/EJEMPLO4_14.html">EJEMPLO4_14: Bordes de elementos a nivel de bloque</a></li>
-        <li><a href="EJEMPLOS_CAPITULO4/EJEMPLO4_15.html">EJEMPLO4_15: Elementos flotantes</a></li>
-        <li><a href="EJEMPLOS_CAPITULO4/EJEMPLO4_16.html">EJEMPLO4_16: Tipos de medios de CSS</a></li>
-        <li><a href="EJEMPLOS_CAPITULO4/EJEMPLO4_17.html">EJEMPLO4_17: Menú desplegable</a></li>
-        <li><a href="EJEMPLOS_CAPITULO4/EJEMPLO4_18.html">EJEMPLO4_18: Medición pt para tamaño de texto</a></li>
-        <li><a href="EJEMPLOS_CAPITULO4/EJEMPLO4_22.html">EJEMPLO4_22: Medición em para tamaño de texto</a></li>
-    </ul>
-    
+    <div class="container">
+        <!-- Columna de Ejemplos -->
+        <div class="seccion">
+            <h3>Ejemplos del Capítulo 4</h3>
+            <ul>
+                <li><a href="EJEMPLOS_CAPITULO4/EJEMPLO4_01.html" target="_blank">Ejemplo 4.1: Estilos en línea</a></li>
+                <li><a href="EJEMPLOS_CAPITULO4/EJEMPLO4_03.html" target="_blank">Ejemplo 4.3: Hoja de estilo incrustada</a></li>
+                <li><a href="EJEMPLOS_CAPITULO4/EJEMPLO4_06.html" target="_blank">Ejemplo 4.6: Herencia en CSS</a></li>
+                <li><a href="EJEMPLOS_CAPITULO4/EJEMPLO4_08.html" target="_blank">Ejemplo 4.8: Vinculación de hoja externa</a></li>
+                <li><a href="EJEMPLOS_CAPITULO4/EJEMPLO4_09.html" target="_blank">Ejemplo 4.9: Posicionamiento absoluto</a></li>
+                <li><a href="EJEMPLOS_CAPITULO4/EJEMPLO4_10.html" target="_blank">Ejemplo 4.10: Posicionamiento relativo</a></li>
+                <li><a href="EJEMPLOS_CAPITULO4/EJEMPLO4_11.html" target="_blank">Ejemplo 4.11: Imágenes de fondo y sangría</a></li>
+                <li><a href="EJEMPLOS_CAPITULO4/EJEMPLO4_12.html" target="_blank">Ejemplo 4.12: Dimensiones de elementos</a></li>
+                <li><a href="EJEMPLOS_CAPITULO4/EJEMPLO4_14.html" target="_blank">Ejemplo 4.14: Bordes de elementos a nivel de bloque</a></li>
+                <li><a href="EJEMPLOS_CAPITULO4/EJEMPLO4_15.html" target="_blank">Ejemplo 4.15: Elementos flotantes</a></li>
+                <li><a href="EJEMPLOS_CAPITULO4/EJEMPLO4_16.html" target="_blank">Ejemplo 4.16: Tipos de medios de CSS</a></li>
+                <li><a href="EJEMPLOS_CAPITULO4/EJEMPLO4_17.html" target="_blank">Ejemplo 4.17: Menú desplegable</a></li>
+                <li><a href="EJEMPLOS_CAPITULO4/EJEMPLO4_18.html" target="_blank">Ejemplo 4.18: Medición pt para tamaño de texto</a></li>
+                <li><a href="EJEMPLOS_CAPITULO4/EJEMPLO4_22.html" target="_blank">Ejemplo 4.22: Medición em para tamaño de texto</a></li>
+            </ul>
+        </div>
+
+        <!-- Columna de Ejercicios -->
+        <div class="seccion">
+            <h3>Ejercicios del Capítulo 4</h3>
+            <ul>
+                <li><a href="EJERCICIOS_CAPITULO4/EJERCICIO4_01.html" target="_blank">Ejercicio 4.1: Mediciones de fuentes</a></li>
+                <li><a href="EJERCICIOS_CAPITULO4/EJERCICIO4_02.html" target="_blank">Ejercicio 4.2: Completar oraciones</a></li>
+                <li><a href="EJERCICIOS_CAPITULO4/EJERCICIO4_03.html" target="_blank">Ejercicio 4.3: Modificación de fuente base y color</a></li>
+                <li><a href="EJERCICIOS_CAPITULO4/EJERCICIO4_04.html" target="_blank">Ejercicio 4.4: Imagen de fondo fija y mosaico</a></li>
+                <li><a href="EJERCICIOS_CAPITULO4/EJERCICIO4_05.html" target="_blank">Ejercicio 4.5: Relleno, bordes y márgenes</a></li>
+                <li><a href="EJERCICIOS_CAPITULO4/EJERCICIO4_06.html" target="_blank">Ejercicio 4.6: Desplazamiento relativo</a></li>
+                <li><a href="EJERCICIOS_CAPITULO4/EJERCICIO4_07.html" target="_blank">Ejercicio 4.7: Diseño de columnas con Float</a></li>
+                <li><a href="EJERCICIOS_CAPITULO4/EJERCICIO4_08.html" target="_blank">Ejercicio 4.8: Estilos de vínculos y efecto hover</a></li>
+                <li><a href="EJERCICIOS_CAPITULO4/EJERCICIO4_09.html" target="_blank">Ejercicio 4.9: Botón de navegación</a></li>
+            </ul>
+        </div>
+    </div>
+
     <a href="../index.html" class="volver">&larr; Volver al Índice General</a>
 
 </body>

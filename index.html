@@ -2,45 +2,83 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Ejercicios de Programacion Web - Marcos Zamora</title>
+    <title>Portafolio de Programación Web - Marcos Zamora</title>
     <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            margin: 30px; 
-            line-height: 1.8;
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
         }
-        h1 { 
-            color: #000080; 
-            border-bottom: 2px solid #000080;
+        .header {
+            background-color: #0056b3;
+            color: white;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        h1 { margin: 0 0 10px 0; font-size: 2em; }
+        h2 { margin: 5px 0; font-size: 1.2em; font-weight: normal; color: #e0e0e0; }
+        .seccion {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto; /* Centra la tarjeta en la pantalla */
+        }
+        .seccion h3 {
+            color: #d35400;
+            border-bottom: 2px solid #eee;
             padding-bottom: 10px;
+            margin-top: 0;
         }
-        ul { 
-            list-style-type: square; 
+        ul { list-style-type: none; padding: 0; }
+        li {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #ccc;
             font-size: 18px;
         }
-        li { 
-            margin-bottom: 15px; 
+        /* Quita el borde punteado del último elemento */
+        li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
         }
-        a { 
-            color: #0000CD; 
-            font-weight: bold; 
-            text-decoration: none; 
+        a {
+            text-decoration: none;
+            color: #0056b3;
+            font-weight: bold;
+            display: block;
+            transition: color 0.3s ease;
         }
-        a:hover { 
-            text-decoration: underline; 
-            color: #00008B; 
+        a:hover {
+            color: #ff6600;
         }
     </style>
 </head>
 <body>
 
-    <h1>Ejercicios de Programacion Web - Marcos Zamora</h1>
-    
-    <ul>
-        <li><a href="CAPITULO2_ZAMORA_REYES_MARCOS_FRANCISCO/index_2.html">Capítulo 2: Introducción a HTML5</a></li>
-        <li><a href="CAPITULO3_ZAMORA_REYES_MARCOS_FRANCISCO/index_3.html">Capítulo 3: Elementos avanzados de HTML5</a></li>
-        <li><a href="CAPITULO4_ZAMORA_REYES_MARCOS_FRANCISCO/index_4.html">Capítulo 4: Hojas de Estilo en Cascada (CSS)</a></li>
-    </ul>
+    <div class="header">
+        <h1>Portafolio de Prácticas de Programación Web</h1>
+        <h2>Alumno: Marcos Francisco Zamora Reyes</h2>
+        <h2>Ingeniería en Sistemas Computacionales | Instituto Tecnológico Superior de Xalapa</h2>
+    </div>
+
+    <div class="seccion">
+        <h3>Índice de Capítulos</h3>
+        <p>Seleccione un capítulo para explorar los ejercicios y ejemplos resueltos:</p>
+        
+        <ul>
+            <li><a href="CAPITULO2_ZAMORA_REYES_MARCOS_FRANCISCO/index_2.html">Capítulo 2: Introducción a HTML5</a></li>
+            <li><a href="CAPITULO3_ZAMORA_REYES_MARCOS_FRANCISCO/index_3.html">Capítulo 3: Elementos avanzados de HTML5</a></li>
+            <li><a href="CAPITULO4_ZAMORA_REYES_MARCOS_FRANCISCO/index_4.html">Capítulo 4: Hojas de Estilo en Cascada (CSS)</a></li>
+            <li><a href="CAPITULO5_ZAMORA_REYES_MARCOS_FRANCISCO/index_5.html">Capítulo 5: Introducción a las hojas de estilo en cascada (CSS): parte 2</a></li>
+        </ul>
+    </div>
 
 </body>
 </html>

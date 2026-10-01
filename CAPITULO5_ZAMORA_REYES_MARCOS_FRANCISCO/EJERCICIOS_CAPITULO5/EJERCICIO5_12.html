@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<!-- Eje. 5.12 -->
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Ejercicio 5.12</title>
+    <style>
+        .multicolumna {
+            column-count: 2; /* Cambiado a dos columnas */
+            column-gap: 30px;
+            /* Grosor y color incrementados */
+            column-rule: 5px solid crimson; 
+        }
+        .imagen-flotante {
+            float: left; /* Hace que el texto flote alrededor de la imagen */
+            margin-right: 15px;
+            margin-bottom: 10px;
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Computadoras, hardware y software</h1>
+        <h2>Introducción a la tecnología</h2> 
+        <h3>Por: Marcos Zamora </h3>
+    </header>
+    <div class="multicolumna">
+        <img src="../src/computadora.jpg" alt="Computadora" class="imagen-flotante">
+        <p>Una computadora es un dispositivo que puede realizar cálculos y tomar decisiones lógicas con mucha más rapidez que los humanos. Muchas de las computadoras personales de la actualidad pueden realizar miles de millones de cálculos en un segundo. Las supercomputadoras ya se encuentran realizando miles de billones de instrucciones por segundo.</p>
+        <p>Las computadoras procesan datos bajo el control de conjuntos de instrucciones llamadas programas de computadora. Estos programas guían a la computadora por conjuntos ordenados de acciones.</p>
+    </div>
+</body>
+</html>

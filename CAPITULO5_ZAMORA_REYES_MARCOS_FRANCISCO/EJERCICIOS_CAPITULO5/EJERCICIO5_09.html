@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+ <!-- Eje. 5.9 -->
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Ejercicio 5.9</title>
+    <style>
+        .cuadro-animado {
+            width: 50px;
+            height: 50px;
+            background-color: royalblue;
+            position: relative;
+            /* nombre_animación | duración | repetición */
+            animation: moverCuadrado 4s infinite;
+        }
+        @keyframes moverCuadrado {
+            0%   { top: 0px; left: 0px; }
+            25%  { top: 0px; left: 200px; }
+            50%  { top: 200px; left: 200px; }
+            75%  { top: 200px; left: 0px; }
+            100% { top: 0px; left: 0px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="cuadro-animado"></div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<!-- Eje. 5.13 -->
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Ejercicio 5.13</title>
+    <style>
+        .flexbox-vertical {
+            display: flex;
+            flex-direction: column; /* Cambia a orientación vertical */
+            gap: 15px;
+            width: 300px;
+        }
+        .flexbox-vertical > div {
+            background-color: lightgrey;
+            border: 2px solid black;
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="flexbox-vertical">
+        <div>Contenido del bloque 1</div>
+        <div>Contenido del bloque 2</div>
+        <div>Contenido del bloque 3</div>
+    </div>
+</body>
+</html>

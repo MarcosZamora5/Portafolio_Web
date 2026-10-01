@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+ <!-- Eje. 5.10 -->
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Ejercicio 5.10</title>
+    <style>
+        .caja-inclinada {
+            width: 200px;
+            height: 100px;
+            background-color: lightgreen;
+            margin: 100px;
+            text-align: center;
+            line-height: 100px;
+            /* direction 'alternate' invierte la animación cada ciclo */
+            animation: inclinarAlterno 3s infinite alternate;
+        }
+        @keyframes inclinarAlterno {
+            0% { transform: skewY(30deg); }   /* De arriba hacia abajo */
+            100% { transform: skewX(30deg); } /* De izquierda a derecha */
+        }
+    </style>
+</head>
+<body>
+    <div class="caja-inclinada">Texto inclinado</div>
+</body>
+</html>
