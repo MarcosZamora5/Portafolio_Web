@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!-- Ejercicio 7.11: ej07_11.html -->
+<!-- Cálculo de kilómetros por litro en reabastecimientos de gasolina. -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio 7.11 - Kilometraje de gasolina</title>
+      <script>
+         var kilometros;
+         var litros;
+         var totalKilometros = 0;
+         var totalLitros = 0;
+         var kplViaje;
+         var kplTotal;
+
+         kilometros = parseFloat( window.prompt( "Escriba los kilómetros conducidos (-1 para terminar):", "0" ) );
+
+         while ( kilometros != -1 )
+         {
+            litros = parseFloat( window.prompt( "Escriba los litros usados en este viaje:", "0" ) );
+
+            kplViaje = kilometros / litros;
+            totalKilometros += kilometros;
+            totalLitros += litros;
+            kplTotal = totalKilometros / totalLitros;
+
+            document.writeln( "<p>Kilómetros por litro en este viaje: " + kplViaje.toFixed( 2 ) + "<br>" );
+            document.writeln( "Total de kilómetros por litro hasta este punto: " + kplTotal.toFixed( 2 ) + "</p>" );
+
+            kilometros = parseFloat( window.prompt( "Escriba los kilómetros conducidos (-1 para terminar):", "0" ) );
+         } // fin de while
+      </script>
+   </head>
+   <body>
+      <hr>
+      <h3>Pseudocódigo (Refinamiento arriba-abajo)</h3>
+      <pre>
+Inicializar totalKilometros en cero
+Inicializar totalLitros en cero
+
+Pedir al usuario los kilómetros conducidos (o -1 para salir)
+Leer kilometros
+
+Mientras kilometros sea diferente de -1
+   Pedir al usuario los litros usados
+   Leer litros
+   Calcular kplViaje = kilometros / litros
+   Sumar kilometros a totalKilometros
+   Sumar litros a totalLitros
+   Calcular kplTotal = totalKilometros / totalLitros
+   Imprimir kplViaje y kplTotal
+   Pedir al usuario los kilómetros conducidos del siguiente viaje (o -1 para salir)
+   Leer kilometros
+      </pre>
+   </body>
+</html>

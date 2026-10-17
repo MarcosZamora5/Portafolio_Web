@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!-- Ejercicio 7.13: ej07_13.html -->
+<!-- Cálculo de ingresos por comisiones de ventas. -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio 7.13 - Comisiones de ventas</title>
+      <script>
+         var articulo;
+         var cantidad;
+         var ventasBrutas = 0.0;
+         var ingresos;
+         var precio;
+
+         articulo = parseInt( window.prompt( "Introduzca el número de artículo vendido (1 a 4, o -1 para terminar):", "1" ) );
+
+         while ( articulo != -1 )
+         {
+            precio = 0.0;
+
+            if ( articulo == 1 )
+               precio = 239.99;
+            else if ( articulo == 2 )
+               precio = 129.75;
+            else if ( articulo == 3 )
+               precio = 99.95;
+            else if ( articulo == 4 )
+               precio = 350.89;
+
+            if ( precio > 0 )
+            {
+               cantidad = parseInt( window.prompt( "¿Cuántas unidades vendió del artículo " + articulo + "?", "1" ) );
+               ventasBrutas += precio * cantidad;
+            }
+            else
+            {
+               window.alert( "Número de artículo inválido. Introduzca un valor entre 1 y 4." );
+            }
+
+            articulo = parseInt( window.prompt( "Introduzca el número de artículo vendido (1 a 4, o -1 para terminar):", "-1" ) );
+         } // fin de while
+
+         ingresos = 200 + ( ventasBrutas * 0.09 );
+
+         document.writeln( "<h2>Resumen de ingresos del vendedor</h2>" );
+         document.writeln( "<p>Ventas brutas de la semana: $" + ventasBrutas.toFixed( 2 ) + "</p>" );
+         document.writeln( "<p><strong>Ingresos totales del vendedor: $" + ingresos.toFixed( 2 ) + "</strong></p>" );
+      </script>
+   </head>
+   <body>
+      <hr>
+      <h3>Pseudocódigo</h3>
+      <pre>
+Inicializar ventasBrutas en 0
+Pedir número de artículo (1-4) o -1 para terminar
+Mientras artículo sea diferente de -1
+   Determinar el precio según el artículo (1: 239.99, 2: 129.75, 3: 99.95, 4: 350.89)
+   Pedir cantidad vendida de ese artículo
+   Sumar (precio * cantidad) a ventasBrutas
+   Pedir siguiente artículo o -1 para terminar
+Calcular ingresos = 200 + (0.09 * ventasBrutas)
+Imprimir ventasBrutas e ingresos
+      </pre>
+   </body>
+</html>

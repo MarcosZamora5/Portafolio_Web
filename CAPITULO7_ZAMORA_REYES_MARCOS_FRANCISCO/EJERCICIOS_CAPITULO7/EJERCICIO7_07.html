@@ -1,0 +1,42 @@
+<!-- Ejercicio 7.7 -->
+
+
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio de autoevaluación 7.7</title>
+   </head>
+   <body>
+      <h2>7.7 Identifique y corrija los <em>errores</em> en cada uno de los siguientes segmentos de código:</h2>
+      <ol type = "a">
+         <li>
+            <pre>
+while ( c <= 5 ) {
+   producto *= c;
+   ++c;</pre>
+            <strong>Error:</strong> Falta la llave derecha de cierre del cuerpo de la instrucción <code>while</code>.<br>
+            <strong>Corrección:</strong> Agregar una llave derecha de cierre después de la instrucción <code>++c;</code>.
+            <pre>
+while ( c <= 5 ) {
+   producto *= c;
+   ++c;
+}</pre>
+         </li>
+         <li>
+            <pre>
+if ( genero == 1 )
+   document.writeln( "Mujer" );
+else;
+   document.writeln( "Hombre" );</pre>
+            <strong>Error:</strong> El <code>;</code> después de <code>else</code> produce un error lógico. La segunda instrucción de salida siempre se ejecutará.<br>
+            <strong>Corrección:</strong> Quitar el punto y coma después de <code>else</code>.
+            <pre>
+if ( genero == 1 )
+   document.writeln( "Mujer" );
+else
+   document.writeln( "Hombre" );</pre>
+         </li>
+      </ol>
+   </body>
+</html>

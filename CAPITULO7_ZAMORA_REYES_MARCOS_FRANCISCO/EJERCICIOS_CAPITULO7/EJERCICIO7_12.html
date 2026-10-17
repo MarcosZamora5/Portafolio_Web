@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!-- Ejercicio 7.12: ej07_12.html -->
+<!-- Verificación de límite de crédito en una tienda departamental. -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio 7.12 - Límite de crédito</title>
+      <script>
+         var cuenta;
+         var saldoInicial;
+         var cargos;
+         var creditos;
+         var limiteCredito;
+         var nuevoSaldo;
+
+         cuenta = parseInt( window.prompt( "Introduzca el número de cuenta (-1 para terminar):", "0" ) );
+
+         while ( cuenta != -1 )
+         {
+            saldoInicial = parseInt( window.prompt( "Introduzca el saldo al inicio del mes:", "0" ) );
+            cargos = parseInt( window.prompt( "Introduzca el total de artículos cargados en el mes:", "0" ) );
+            creditos = parseInt( window.prompt( "Introduzca el total de créditos aplicados en el mes:", "0" ) );
+            limiteCredito = parseInt( window.prompt( "Introduzca el límite de crédito permitido:", "0" ) );
+
+            nuevoSaldo = saldoInicial + cargos - creditos;
+
+            document.writeln( "<p><strong>Cuenta:</strong> " + cuenta + "<br>" );
+            document.writeln( "<strong>Nuevo saldo:</strong> $" + nuevoSaldo + "<br>" );
+
+            if ( nuevoSaldo > limiteCredito )
+            {
+               document.writeln( "<strong>Límite de crédito:</strong> $" + limiteCredito + "<br>" );
+               document.writeln( "<strong>Se excedió el límite de su crédito.</strong>" );
+            } // fin de if
+
+            document.writeln( "</p><hr>" );
+
+            cuenta = parseInt( window.prompt( "Introduzca el número de cuenta (-1 para terminar):", "0" ) );
+         } // fin de while
+      </script>
+   </head>
+   <body>
+      <h3>Pseudocódigo</h3>
+      <pre>
+Pedir el número de cuenta (o -1 para salir)
+Mientras el número de cuenta no sea -1
+   Leer saldoInicial, cargos, creditos y limiteCredito como enteros
+   Calcular nuevoSaldo = saldoInicial + cargos - creditos
+   Mostrar el nuevoSaldo
+   Si nuevoSaldo es mayor que limiteCredito
+      Mostrar el mensaje "Se excedió el límite de su crédito"
+   Pedir el siguiente número de cuenta (o -1 para salir)
+      </pre>
+   </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!-- Ejercicio 9.19: EJERCICIO9_019.html -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Números primos hasta 10,000</title>
+      <script>
+         function iniciar()
+         {
+            document.getElementById( "btnPrimos" ).addEventListener( "click", buscarPrimos, false );
+         }
+
+         // a) Función para determinar si un número es primo (optimizada con raíz cuadrada)
+         function esPrimo( numero )
+         {
+            if ( numero < 2 ) return false;
+            var limite = Math.sqrt( numero );
+            for ( var i = 2; i <= limite; ++i )
+            {
+               if ( numero % i === 0 )
+               {
+                  return false;
+               }
+            }
+            return true;
+         }
+
+         // b y c) Imprimir primos entre 1 y 10,000 usando textarea
+         function buscarPrimos()
+         {
+            var textoPrimos = "";
+            var contadorPruebas = 0;
+
+            for ( var n = 1; n <= 10000; ++n )
+            {
+               if ( esPrimo( n ) )
+               {
+                  textoPrimos += n + " ";
+               }
+            }
+
+            document.getElementById( "areaPrimos" ).value = textoPrimos;
+         }
+
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <form action = "#">
+         <p><input id = "btnPrimos" type = "button" value = "Calcular Primos (1 a 10000)"></p>
+      </form>
+      <p>Lista de números primos encontrados:</p>
+      <textarea id = "areaPrimos" rows = "15" cols = "80"></textarea>
+   </body>
+</html>

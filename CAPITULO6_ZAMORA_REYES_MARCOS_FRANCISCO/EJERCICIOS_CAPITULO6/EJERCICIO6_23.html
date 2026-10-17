@@ -1,0 +1,37 @@
+<!-- Ejercicio 23 -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Ejercicio 6.23</title>
+    <script>
+        var n1 = parseFloat(window.prompt("Número 1:", "0"));
+        var n2 = parseFloat(window.prompt("Número 2:", "0"));
+        var n3 = parseFloat(window.prompt("Número 3:", "0"));
+
+        var positivos = 0, negativos = 0, ceros = 0;
+
+        // Comprobaciones para n1
+        if (n1 > 0) positivos = positivos + 1;
+        if (n1 < 0) negativos = negativos + 1;
+        if (n1 == 0) ceros = ceros + 1;
+
+        // Comprobaciones para n2
+        if (n2 > 0) positivos = positivos + 1;
+        if (n2 < 0) negativos = negativos + 1;
+        if (n2 == 0) ceros = ceros + 1;
+
+        // Comprobaciones para n3
+        if (n3 > 0) positivos = positivos + 1;
+        if (n3 < 0) negativos = negativos + 1;
+        if (n3 == 0) ceros = ceros + 1;
+
+        document.writeln("<h1>Resultados del conteo:</h1>");
+        document.writeln("<p>Positivos: " + positivos + "</p>");
+        document.writeln("<p>Negativos: " + negativos + "</p>");
+        document.writeln("<p>Ceros: " + ceros + "</p>");
+    </script>
+</head>
+<body></body>
+</html>

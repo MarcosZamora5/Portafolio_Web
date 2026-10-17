@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!-- Ejercicio 9.2: cubo.html -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Alcance - Ejercicio 9.2</title>
+      <script>
+         var x;
+
+         function salida()
+         {
+            var contenedor = document.getElementById( "resultadoCubos" );
+            var html = "";
+            for ( x = 1; x <= 10; x++ )
+               html += "<p>" + cubo( x ) + "</p>";
+            contenedor.innerHTML = html;
+         } // fin de la función salida
+
+         function cubo( y )
+         {
+            return y * y * y;
+         } // fin de la función cubo
+
+         window.addEventListener( "load", salida, false );
+      </script>
+   </head>
+   <body>
+      <h2>9.2 Para el programa de la figura 9.13, indique el alcance (ya sea alcance global o de función) de cada uno de los siguientes elementos:</h2>
+      <ol type = "a">
+         <li>La variable <code>x</code>: <strong><u>alcance global</u></strong>.</li>
+         <li>La variable <code>y</code>: <strong><u>alcance de función</u></strong>.</li>
+         <li>La función <code>cubo</code>: <strong><u>alcance global</u></strong>.</li>
+         <li>La función <code>salida</code>: <strong><u>alcance global</u></strong>.</li>
+      </ol>
+      <hr>
+      <h3>Salida del programa (Figura 9.13 - cubo.html):</h3>
+      <div id = "resultadoCubos"></div>
+   </body>
+</html>

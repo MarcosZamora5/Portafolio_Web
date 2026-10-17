@@ -1,0 +1,32 @@
+<!-- Ejercicio 20 -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Ejercicio 6.20</title>
+    <script>
+        var n1 = parseInt(window.prompt("Entero 1:", "0"));
+        var n2 = parseInt(window.prompt("Entero 2:", "0"));
+        var n3 = parseInt(window.prompt("Entero 3:", "0"));
+        var n4 = parseInt(window.prompt("Entero 4:", "0"));
+        var n5 = parseInt(window.prompt("Entero 5:", "0"));
+
+        var menor = n1;
+        if (n2 < menor) menor = n2;
+        if (n3 < menor) menor = n3;
+        if (n4 < menor) menor = n4;
+        if (n5 < menor) menor = n5;
+
+        var mayor = n1;
+        if (n2 > mayor) mayor = n2;
+        if (n3 > mayor) mayor = n3;
+        if (n4 > mayor) mayor = n4;
+        if (n5 > mayor) mayor = n5;
+
+        document.writeln("<h1>El número menor es: " + menor + "</h1>");
+        document.writeln("<h1>El número mayor es: " + mayor + "</h1>");
+    </script>
+</head>
+<body></body>
+</html>

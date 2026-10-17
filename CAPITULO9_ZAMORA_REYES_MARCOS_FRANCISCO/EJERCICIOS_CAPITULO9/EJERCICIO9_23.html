@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!-- Ejercicio 9.23: EJERCICIO9_023.html -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>CAI con Variedad de Respuestas</title>
+      <script>
+         var num1, num2, respuestaCorrecta;
+
+         function iniciar()
+         {
+            document.getElementById( "btnEnviar" ).addEventListener( "click", verificarRespuesta, false );
+            generarNuevaPregunta();
+         }
+
+         function generarNuevaPregunta()
+         {
+            num1 = Math.floor( Math.random() * 9 ) + 1;
+            num2 = Math.floor( Math.random() * 9 ) + 1;
+            respuestaCorrecta = num1 * num2;
+
+            document.getElementById( "pregunta" ).innerHTML = "¿Cuánto es " + num1 + " por " + num2 + "?";
+            document.getElementById( "respuestaUsuario" ).value = "";
+            document.getElementById( "retroalimentacion" ).innerHTML = "";
+         }
+
+         function obtenerRespuestaAleatoria( esCorrecta )
+         {
+            var selector = Math.floor( Math.random() * 4 ) + 1;
+            var mensaje = "";
+
+            if ( esCorrecta )
+            {
+               switch ( selector )
+               {
+                  case 1: mensaje = "Muy bien."; break;
+                  case 2: mensaje = "Excelente."; break;
+                  case 3: mensaje = "Buen trabajo."; break;
+                  case 4: mensaje = "Siga así."; break;
+               }
+            }
+            else
+            {
+               switch ( selector )
+               {
+                  case 1: mensaje = "No. Intente de nuevo."; break;
+                  case 2: mensaje = "Equivocado. Trate una vez más."; break;
+                  case 3: mensaje = "No se dé por vencido."; break;
+                  case 4: mensaje = "No. Siga intentando."; break;
+               }
+            }
+            return mensaje;
+         }
+
+         function verificarRespuesta()
+         {
+            var respuestaUser = parseInt( document.getElementById( "respuestaUsuario" ).value );
+            var retro = document.getElementById( "retroalimentacion" );
+
+            if ( respuestaUser === respuestaCorrecta )
+            {
+               retro.style.color = "green";
+               retro.innerHTML = obtenerRespuestaAleatoria( true );
+               setTimeout( generarNuevaPregunta, 1500 );
+            }
+            else
+            {
+               retro.style.color = "red";
+               retro.innerHTML = obtenerRespuestaAleatoria( false );
+            }
+         }
+
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <h2 id = "pregunta"></h2>
+      <form action = "#">
+         <p><input id = "respuestaUsuario" type = "number">
+            <input id = "btnEnviar" type = "button" value = "Responder"></p>
+      </form>
+      <p id = "retroalimentacion" style = "font-weight: bold; font-size: 1.2em;"></p>
+   </body>
+</html>

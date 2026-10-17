@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!-- Ejercicio 9.8: EJERCICIO9_08.html -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Cargos de estacionamiento</title>
+      <script>
+         function iniciar()
+         {
+            var boton = document.getElementById( "botonCalcular" );
+            boton.addEventListener( "click", procesarCliente, false );
+         }
+
+         function calcularCargos( horas )
+         {
+            var cargo = 2.00; // cuota mínima de $2 por hasta tres horas
+
+            if ( horas > 3.0 )
+            {
+               cargo += Math.ceil( horas - 3.0 ) * 0.50;
+            }
+
+            if ( cargo > 10.00 )
+            {
+               cargo = 10.00; // cargo máximo por un periodo de 24 horas
+            }
+
+            return cargo;
+         }
+
+         function procesarCliente()
+         {
+            var campoHoras = document.getElementById( "campoHoras" );
+            var horas = parseFloat( campoHoras.value );
+            var resultado = document.getElementById( "resultado" );
+
+            if ( isNaN( horas ) || horas < 0 || horas > 24 )
+            {
+               resultado.innerHTML = "Por favor, introduzca un número válido de horas (entre 0 y 24).";
+               return;
+            }
+
+            var cargoActual = calcularCargos( horas );
+            resultado.innerHTML = "El cargo para este cliente es de: $" + cargoActual.toFixed( 2 );
+         }
+
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <form action = "#">
+         <p><label>Horas estacionado: 
+            <input id = "campoHoras" type = "number" step = "any" min = "0" max = "24"></label>
+            <input id = "botonCalcular" type = "button" value = "Calcular Cargo"></p>
+      </form>
+      <p id = "resultado"></p>
+   </body>
+</html>

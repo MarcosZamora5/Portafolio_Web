@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!-- Ejercicio 9.20: EJERCICIO9_020.html -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Calidad de puntos de estudiante</title>
+      <script>
+         function iniciar()
+         {
+            document.getElementById( "btnEvaluar" ).addEventListener( "click", evaluarPromedio, false );
+         }
+
+         function puntosCalidad( promedio )
+         {
+            if ( promedio >= 90 && promedio <= 100 )
+               return 4;
+            else if ( promedio >= 80 && promedio <= 89 )
+               return 3;
+            else if ( promedio >= 70 && promedio <= 79 )
+               return 2;
+            else if ( promedio >= 60 && promedio <= 69 )
+               return 1;
+            else
+               return 0;
+         }
+
+         function evaluarPromedio()
+         {
+            var prom = parseFloat( document.getElementById( "promedio" ).value );
+            var puntos = puntosCalidad( prom );
+            document.getElementById( "resultado" ).innerHTML = "Puntos de calidad asignados: " + puntos;
+         }
+
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <form action = "#">
+         <p><label>Promedio del estudiante: <input id = "promedio" type = "number" step = "any" min = "0" max = "100"></label>
+            <input id = "btnEvaluar" type = "button" value = "Obtener Puntos"></p>
+      </form>
+      <p id = "resultado"></p>
+   </body>
+</html>

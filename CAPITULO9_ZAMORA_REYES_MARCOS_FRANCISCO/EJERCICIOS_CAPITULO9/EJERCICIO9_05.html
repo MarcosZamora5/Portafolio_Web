@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!-- Ejercicio 9.5: EJERCICIO9_05.html -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio de autoevaluación 9.5</title>
+   </head>
+   <body>
+      <h2>9.5 Localice el error en cada uno de los siguientes segmentos de programa y explique cómo corregirlo:</h2>
+      <ol type = "a">
+         <li>
+            <pre>
+method g()
+{
+   document.writeln( "Dentro del m&amp;eacute;todo g" );
+}</pre>
+            <strong>Error:</strong> <code>method</code> no es la palabra clave que se utiliza para comenzar la definición de una función.<br>
+            <strong>Corrección:</strong> Cambiar <code>method</code> a <code>function</code>.
+            <pre>
+function g()
+{
+   document.writeln( "Dentro de la función g" );
+}</pre>
+         </li>
+         <li>
+            <pre>
+// Esta función debe devolver la suma de sus argumentos
+function suma(x, y)
+{
+   var resultado;
+   resultado = x + y;
+}</pre>
+            <strong>Error:</strong> Se supone que la función debe devolver un valor, pero no es así.<br>
+            <strong>Corrección:</strong> Eliminar la variable <code>resultado</code> y colocar la instrucción <code>return x + y;</code> en la función, o agregar la instrucción <code>return resultado;</code> al final del cuerpo de la función:
+            <pre>
+function suma(x, y)
+{
+   var resultado;
+   resultado = x + y;
+   return resultado;
+}</pre>
+         </li>
+         <li>
+            <pre>
+function f( a );
+{
+   document.writeln( a );
+}</pre>
+            <strong>Error:</strong> El punto y coma después del paréntesis derecho que encierra la lista de parámetros.<br>
+            <strong>Corrección:</strong> Elimine el punto y coma después del paréntesis derecho de la lista de parámetros:
+            <pre>
+function f( a )
+{
+   document.writeln( a );
+}</pre>
+         </li>
+      </ol>
+   </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!-- Ejercicio 7.20: ej07_20.html -->
+<!-- Determinar si un entero de cinco dígitos es un palíndromo. -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio 7.20 - Palíndromo</title>
+      <script>
+         var numero = 0;
+         var d1, d2, d4, d5;
+
+         while ( numero < 10000 || numero > 99999 || isNaN( numero ) )
+         {
+            numero = parseInt( window.prompt( "Introduzca un entero de cinco dígitos:", "12321" ) );
+
+            if ( numero < 10000 || numero > 99999 || isNaN( numero ) )
+               window.alert( "Error: El número introducido no es de cinco dígitos. Intente de nuevo." );
+         } // fin de while
+
+         // Separar los dígitos usando división y residuo
+         d1 = Math.floor( numero / 10000 );
+         d2 = Math.floor( ( numero % 10000 ) / 1000 );
+         d4 = Math.floor( ( numero % 100 ) / 10 );
+         d5 = numero % 10;
+
+         if ( d1 == d5 && d2 == d4 )
+            document.writeln( "<h1>El número " + numero + " ES un palíndromo.</h1>" );
+         else
+            document.writeln( "<h1>El número " + numero + " NO es un palíndromo.</h1>" );
+      </script>
+   </head>
+   <body></body>
+</html>

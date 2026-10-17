@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!-- Ejercicio 9.22: EJERCICIO9_022.html -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Instrucción Asistida por Computadora (CAI) - Multiplicación</title>
+      <script>
+         var num1, num2, respuestaCorrecta;
+
+         function iniciar()
+         {
+            document.getElementById( "btnEnviar" ).addEventListener( "click", verificarRespuesta, false );
+            generarNuevaPregunta();
+         }
+
+         function generarNuevaPregunta()
+         {
+            num1 = Math.floor( Math.random() * 9 ) + 1; // 1 a 9
+            num2 = Math.floor( Math.random() * 9 ) + 1; // 1 a 9
+            respuestaCorrecta = num1 * num2;
+
+            document.getElementById( "pregunta" ).innerHTML = "¿Cuánto es " + num1 + " por " + num2 + "?";
+            document.getElementById( "respuestaUsuario" ).value = "";
+            document.getElementById( "retroalimentacion" ).innerHTML = "";
+         }
+
+         function verificarRespuesta()
+         {
+            var respuestaUser = parseInt( document.getElementById( "respuestaUsuario" ).value );
+            var retro = document.getElementById( "retroalimentacion" );
+
+            if ( respuestaUser === respuestaCorrecta )
+            {
+               retro.style.color = "green";
+               retro.innerHTML = "Muy bien";
+               setTimeout( generarNuevaPregunta, 1500 ); // Genera nueva pregunta tras 1.5s
+            }
+            else
+            {
+               retro.style.color = "red";
+               retro.innerHTML = "No. Intente de nuevo.";
+            }
+         }
+
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <h2 id = "pregunta"></h2>
+      <form action = "#">
+         <p><input id = "respuestaUsuario" type = "number">
+            <input id = "btnEnviar" type = "button" value = "Responder"></p>
+      </form>
+      <p id = "retroalimentacion" style = "font-weight: bold; font-size: 1.2em;"></p>
+   </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!-- Ejercicio 9.17: EJERCICIO9_017.html -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Conversión de temperaturas</title>
+      <script>
+         function iniciar()
+         {
+            document.getElementById( "btnCelsius" ).addEventListener( "click", convertirACelsius, false );
+            document.getElementById( "btnFahrenheit" ).addEventListener( "click", convertirAFahrenheit, false );
+         }
+
+         function celsius( f )
+         {
+            return ( 5.0 / 9.0 ) * ( f - 32 );
+         }
+
+         function fahrenheit( c )
+         {
+            return ( 9.0 / 5.0 ) * c + 32;
+         }
+
+         function convertirACelsius()
+         {
+            var valF = parseFloat( document.getElementById( "tempF" ).value );
+            var res = celsius( valF );
+            document.getElementById( "resultado" ).innerHTML = valF + " °F equivalen a " + res.toFixed( 2 ) + " °C.";
+         }
+
+         function convertirAFahrenheit()
+         {
+            var valC = parseFloat( document.getElementById( "tempC" ).value );
+            var res = fahrenheit( valC );
+            document.getElementById( "resultado" ).innerHTML = valC + " °C equivalen a " + res.toFixed( 2 ) + " °F.";
+         }
+
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <form action = "#">
+         <p><label>Fahrenheit a Celsius: <input id = "tempF" type = "number" step = "any"></label>
+            <input id = "btnCelsius" type = "button" value = "Convertir a Celsius"></p>
+         <p><label>Celsius a Fahrenheit: <input id = "tempC" type = "number" step = "any"></label>
+            <input id = "btnFahrenheit" type = "button" value = "Convertir a Fahrenheit"></p>
+      </form>
+      <p id = "resultado"></p>
+   </body>
+</html>

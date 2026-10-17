@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!-- Ejercicio 9.15: EJERCICIO9_015.html -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Verificar si enteros son pares con centinela</title>
+      <script>
+         function verificarPares()
+         {
+            var entrada = window.prompt( "Escriba un número entero (-1 para terminar):", "0" );
+            var valor = parseInt( entrada );
+            var salida = "";
+
+            while ( valor !== -1 )
+            {
+               if ( esPar( valor ) )
+               {
+                  salida += "<p>El número " + valor + " es par (true).</p>";
+               }
+               else
+               {
+                  salida += "<p>El número " + valor + " es impar (false).</p>";
+               }
+
+               entrada = window.prompt( "Escriba otro número entero (-1 para terminar):", "0" );
+               valor = parseInt( entrada );
+            }
+
+            document.getElementById( "resultados" ).innerHTML = salida;
+         }
+
+         function esPar( n )
+         {
+            return ( n % 2 === 0 );
+         }
+
+         window.addEventListener( "load", verificarPares, false );
+      </script>
+   </head>
+   <body>
+      <h1>Resultados de verificación de pares</h1>
+      <div id = "resultados"></div>
+   </body>
+</html>

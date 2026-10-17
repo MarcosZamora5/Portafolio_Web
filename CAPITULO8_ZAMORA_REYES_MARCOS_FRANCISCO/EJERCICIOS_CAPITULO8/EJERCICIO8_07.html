@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!-- Ejercicio 8.7: EJERCICIO8_07.html -->
+<!-- Cálculo del producto de los enteros impares del 1 al 15. -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Producto de enteros impares</title>
+   </head>
+   <body>
+      <h1>Producto de los enteros impares del 1 al 15</h1>
+      <script>
+         var producto = 1;
+
+         for ( var i = 1; i <= 15; i += 2 )
+         {
+            producto *= i;
+         }
+
+         document.writeln( "<p>El producto de los números impares del 1 al 15 es: <strong>" + producto + "</strong></p>" );
+      </script>
+   </body>
+</html>

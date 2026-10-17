@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!-- Ejercicio 9.18: EJERCICIO9_018.html -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Función mínimo 3</title>
+      <script>
+         function iniciar()
+         {
+            document.getElementById( "btnMin" ).addEventListener( "click", calcularMinimo, false );
+         }
+
+         function minimo3( x, y, z )
+         {
+            return Math.min( x, Math.min( y, z ) );
+         }
+
+         function calcularMinimo()
+         {
+            var n1 = parseFloat( document.getElementById( "n1" ).value );
+            var n2 = parseFloat( document.getElementById( "n2" ).value );
+            var n3 = parseFloat( document.getElementById( "n3" ).value );
+            var min = minimo3( n1, n2, n3 );
+
+            document.getElementById( "resultado" ).innerHTML = "El valor más pequeño es: " + min;
+         }
+
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <form action = "#">
+         <p>Número 1: <input id = "n1" type = "number" step = "any"></p>
+         <p>Número 2: <input id = "n2" type = "number" step = "any"></p>
+         <p>Número 3: <input id = "n3" type = "number" step = "any"></p>
+         <p><input id = "btnMin" type = "button" value = "Encontrar Mínimo"></p>
+      </form>
+      <p id = "resultado"></p>
+   </body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!-- Ejercicio 9.28: EJERCICIO9_028.html -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Craps con Apuestas</title>
+      <script>
+         var saldoBanco = 1000;
+         var apuesta = 0;
+         var miPunto = 0;
+         var valorDado1, valorDado2;
+
+         function iniciar()
+         {
+            document.getElementById( "btnApostar" ).addEventListener( "click", realizarApuesta, false );
+            document.getElementById( "btnTirar" ).addEventListener( "click", tirarDeNuevo, false );
+            actualizarInterfaz();
+         }
+
+         function actualizarInterfaz()
+         {
+            document.getElementById( "saldoTxt" ).innerHTML = "$" + saldoBanco;
+            if ( saldoBanco <= 0 )
+            {
+               document.getElementById( "mensajes" ).innerHTML = "¡Lo siento. Está en bancarrota!";
+               document.getElementById( "btnApostar" ).disabled = true;
+               document.getElementById( "btnTirar" ).disabled = true;
+            }
+         }
+
+         function obtenerConversacionAleatoria()
+         {
+            var msgs = [
+               "¡Oh, vamos, arriésguese!",
+               "¡Está teniendo éxito! ¡Es momento de incrementar sus apuestas!",
+               "Parece que va a la baja, ¡pero la suerte puede cambiar!",
+               "¡Qué gran racha!"
+            ];
+            return msgs[ Math.floor( Math.random() * msgs.length ) ];
+         }
+
+         function realizarApuesta()
+         {
+            apuesta = parseInt( document.getElementById( "campoApuesta" ).value );
+
+            if ( isNaN( apuesta ) || apuesta <= 0 || apuesta > saldoBanco )
+            {
+               alert( "Apuesta inválida. Debe ser mayor a 0 y no exceder su saldo actual de $" + saldoBanco );
+               return;
+            }
+
+            document.getElementById( "campoApuesta" ).disabled = true;
+            document.getElementById( "btnApostar" ).disabled = true;
+            document.getElementById( "btnTirar" ).disabled = false;
+
+            primerTiro();
+         }
+
+         function tirarDados()
+         {
+            valorDado1 = Math.floor( Math.random() * 6 ) + 1;
+            valorDado2 = Math.floor( Math.random() * 6 ) + 1;
+            return valorDado1 + valorDado2;
+         }
+
+         function primerTiro()
+         {
+            var suma = tirarDados();
+            var msg = document.getElementById( "mensajes" );
+
+            msg.innerHTML = "Tiró " + valorDado1 + " + " + valorDado2 + " = " + suma + "<br>";
+
+            if ( suma === 7 || suma === 11 )
+            {
+               saldoBanco += apuesta;
+               msg.innerHTML += "¡Ha ganado en el primer tiro! " + obtenerConversacionAleatoria();
+               reiniciarRonda();
+            }
+            else if ( suma === 2 || suma === 3 || suma === 12 )
+            {
+               saldoBanco -= apuesta;
+               msg.innerHTML += "Craps. Perdió su apuesta.";
+               reiniciarRonda();
+            }
+            else
+            {
+               miPunto = suma;
+               msg.innerHTML += "Su punto es: " + miPunto + ". " + obtenerConversacionAleatoria();
+            }
+         }
+
+         function tirarDeNuevo()
+         {
+            var suma = tirarDados();
+            var msg = document.getElementById( "mensajes" );
+
+            msg.innerHTML = "Tiró " + valorDado1 + " + " + valorDado2 + " = " + suma + "<br>";
+
+            if ( suma === miPunto )
+            {
+               saldoBanco += apuesta;
+               msg.innerHTML += "¡Ha ganado alcanzando su punto! " + obtenerConversacionAleatoria();
+               reiniciarRonda();
+            }
+            else if ( suma === 7 )
+            {
+               saldoBanco -= apuesta;
+               msg.innerHTML += "Sacó un 7. Perdió su apuesta.";
+               reiniciarRonda();
+            }
+            else
+            {
+               msg.innerHTML += "Sigue tirando... El punto es " + miPunto;
+            }
+         }
+
+         function reiniciarRonda()
+         {
+            document.getElementById( "campoApuesta" ).disabled = false;
+            document.getElementById( "btnApostar" ).disabled = false;
+            document.getElementById( "btnTirar" ).disabled = true;
+            document.getElementById( "campoApuesta" ).value = "";
+            actualizarInterfaz();
+         }
+
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <h2>Juego de Craps con Apuestas</h2>
+      <p>Saldo en banco: <strong id = "saldoTxt">$1000</strong></p>
+      <form action = "#">
+         <p><label>Cantidad a apostar: <input id = "campoApuesta" type = "number" min = "1"></label>
+            <input id = "btnApostar" type = "button" value = "Realizar Apuesta"></p>
+         <p><input id = "btnTirar" type = "button" value = "Tirar de Nuevo" disabled></p>
+      </form>
+      <p id = "mensajes" style = "font-size: 1.1em; font-weight: bold;"></p>
+   </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<!-- Ejercicio 7.18: ej07_18.html -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Secuencia de comandos misteriosa</title>
+      <script>
+
+         var fila = 10;
+         var columna;
+
+         while ( fila >= 1 )
+         {
+            columna = 1;
+            document.writeln( "<p>" );
+
+            while ( columna <= 10 )
+            {
+               document.write( fila % 2 == 1 ? "<" : ">" );
+               ++columna;
+            } // end while
+
+            --fila;
+            document.writeln( "</p>" );
+         } // end while
+
+      </script>
+   </head>
+   <body>
+      <hr>
+      <h3>7.18 Sin ejecutar la siguiente secuencia de comandos, determine lo que imprime:</h3>
+      <p><strong>Respuesta:</strong> Imprime 10 párrafos (filas), cada uno con 10 caracteres. Cuando el número de <code>fila</code> es par (10, 8, 6, 4, 2) imprime una línea de diez signos mayor que (<code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>), y cuando el número de <code>fila</code> es impar (9, 7, 5, 3, 1) imprime una línea de diez signos menor que (<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>), alternando entre ambas filas.</p>
+   </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!-- Ejercicio 9.13: EJERCICIO9_013.html -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Función potenciaEntera</title>
+      <script>
+         function iniciar()
+         {
+            var boton = document.getElementById( "botonCalcular" );
+            boton.addEventListener( "click", calcularPotencia, false );
+         }
+
+         function potenciaEntera( base, exponente )
+         {
+            var resultado = 1;
+            for ( var i = 1; i <= exponente; ++i )
+            {
+               resultado *= base;
+            }
+            return resultado;
+         }
+
+         function calcularPotencia()
+         {
+            var base = parseInt( document.getElementById( "campoBase" ).value );
+            var exponente = parseInt( document.getElementById( "campoExponente" ).value );
+            var resultado = document.getElementById( "resultado" );
+
+            var res = potenciaEntera( base, exponente );
+            resultado.innerHTML = base + " elevado a la " + exponente + " es: " + res;
+         }
+
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <form action = "#">
+         <p><label>Base: <input id = "campoBase" type = "number"></label></p>
+         <p><label>Exponente: <input id = "campoExponente" type = "number" min = "1"></label></p>
+         <p><input id = "botonCalcular" type = "button" value = "Calcular Potencia"></p>
+      </form>
+      <p id = "resultado"></p>
+   </body>
+</html>

@@ -1,0 +1,19 @@
+<!-- Ejercicio 7.8 -->
+
+
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio de autoevaluación 7.8</title>
+   </head>
+   <body>
+      <h2>7.8 ¿Qué está mal en la siguiente instrucción de repetición <code>while</code>?</h2>
+      <pre>
+while ( z >= 0 )
+   suma += z;</pre>
+      <p>
+         <strong>Respuesta:</strong> El valor de la variable <code>z</code> nunca se cambia en el cuerpo de la instrucción <code>while</code>. Por lo tanto, si la condición de continuación de ciclo (<code>z >= 0</code>) es verdadera, se crea un <em>ciclo infinito</em>. Para evitar que ocurra un ciclo infinito, <code>z</code> debe decrementarse de manera que en un momento dado se vuelva menor que 0.
+      </p>
+   </body>
+</html>

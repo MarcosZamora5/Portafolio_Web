@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!-- Ejercicio 9.21: EJERCICIO9_021.html -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Simulación de lanzamiento de monedas</title>
+      <script>
+         function iniciar()
+         {
+            document.getElementById( "btnLanzar" ).addEventListener( "click", simularLanzamientos, false );
+         }
+
+         function arrojar()
+         {
+            // Math.random() < 0.5 simula aproximadamente 50% de probabilidad para cada lado
+            return ( Math.random() < 0.5 );
+         }
+
+         function simularLanzamientos()
+         {
+            var caras = 0;
+            var cruces = 0;
+            var salida = "";
+
+            for ( var i = 1; i <= 100; ++i )
+            {
+               if ( arrojar() )
+               {
+                  salida += "Cara<br>";
+                  caras++;
+               }
+               else
+               {
+                  salida += "Cruz<br>";
+                  cruces++;
+               }
+            }
+
+            salida += "<hr><strong>Total de Caras:</strong> " + caras + "<br><strong>Total de Cruces:</strong> " + cruces;
+            document.getElementById( "resultado" ).innerHTML = salida;
+         }
+
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <form action = "#">
+         <p><input id = "btnLanzar" type = "button" value = "Lanzar Moneda 100 veces"></p>
+      </form>
+      <div id = "resultado"></div>
+   </body>
+</html>

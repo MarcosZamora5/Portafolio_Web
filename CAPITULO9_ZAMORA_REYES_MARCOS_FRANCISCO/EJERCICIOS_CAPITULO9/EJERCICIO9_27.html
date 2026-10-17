@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!-- Ejercicio 9.27: EJERCICIO9_027.html -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>CAI Avanzado con Niveles y Operaciones</title>
+      <script>
+         var num1, num2, respuestaCorrecta;
+
+         function iniciar()
+         {
+            document.getElementById( "btnEnviar" ).addEventListener( "click", verificarRespuesta, false );
+            generarNuevaPregunta();
+         }
+
+         function generarNuevaPregunta()
+         {
+            var nivel = parseInt( document.getElementById( "selectNivel" ).value );
+            var tipoOp = parseInt( document.getElementById( "selectTipo" ).value );
+
+            var max = Math.pow( 10, nivel );
+            var min = Math.pow( 10, nivel - 1 );
+
+            num1 = Math.floor( Math.random() * ( max - min ) ) + min;
+            num2 = Math.floor( Math.random() * ( max - min ) ) + min;
+
+            var opActual = tipoOp;
+            if ( tipoOp === 5 )
+            {
+               opActual = Math.floor( Math.random() * 4 ) + 1; // 1:suma, 2:resta, 3:multiplicación, 4:división
+            }
+
+            var simbolo = "";
+            switch ( opActual )
+            {
+               case 1:
+                  simbolo = "+";
+                  respuestaCorrecta = num1 + num2;
+                  break;
+               case 2:
+                  simbolo = "-";
+                  // Asegurar que no dé negativo si se prefiere
+                  if ( num1 < num2 ) { var temp = num1; num1 = num2; num2 = temp; }
+                  respuestaCorrecta = num1 - num2;
+                  break;
+               case 3:
+                  simbolo = "por";
+                  respuestaCorrecta = num1 * num2;
+                  break;
+               case 4:
+                  simbolo = "entre";
+                  num2 = Math.floor( Math.random() * ( max - min ) ) + 1; // evitar división por cero
+                  respuestaCorrecta = parseFloat( ( num1 / num2 ).toFixed( 2 ) );
+                  break;
+            }
+
+            document.getElementById( "pregunta" ).innerHTML = "¿Cuánto es " + num1 + " " + simbolo + " " + num2 + "?";
+            document.getElementById( "respuestaUsuario" ).value = "";
+            document.getElementById( "retroalimentacion" ).innerHTML = "";
+         }
+
+         function verificarRespuesta()
+         {
+            var respuestaUser = parseFloat( document.getElementById( "respuestaUsuario" ).value );
+            var retro = document.getElementById( "retroalimentacion" );
+
+            if ( isNaN( respuestaUser ) ) return;
+
+            if ( Math.abs( respuestaUser - respuestaCorrecta ) < 0.01 )
+            {
+               retro.style.color = "green";
+               retro.innerHTML = "¡Muy bien!";
+               setTimeout( generarNuevaPregunta, 1500 );
+            }
+            else
+            {
+               retro.style.color = "red";
+               retro.innerHTML = "No. Intente de nuevo.";
+            }
+         }
+
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <p>
+         <label>Nivel de grado: 
+            <select id = "selectNivel">
+               <option value = "1">Nivel 1 (1 dígito)</option>
+               <option value = "2">Nivel 2 (2 dígitos)</option>
+               <option value = "3">Nivel 3 (3 dígitos)</option>
+            </select>
+         </label>
+         &nbsp;&nbsp;
+         <label>Tipo de problema: 
+            <select id = "selectTipo">
+               <option value = "1">1. Suma</option>
+               <option value = "2">2. Resta</option>
+               <option value = "3">3. Multiplicación</option>
+               <option value = "4">4. División</option>
+               <option value = "5">5. Mezcla aleatoria</option>
+            </select>
+         </label>
+         <input type = "button" value = "Cambiar Configuración" onclick = "generarNuevaPregunta()">
+      </p>
+      <hr>
+      <h2 id = "pregunta"></h2>
+      <form action = "#">
+         <p><input id = "respuestaUsuario" type = "number" step = "any">
+            <input id = "btnEnviar" type = "button" value = "Responder"></p>
+      </form>
+      <p id = "retroalimentacion" style = "font-weight: bold; font-size: 1.2em;"></p>
+   </body>
+</html>

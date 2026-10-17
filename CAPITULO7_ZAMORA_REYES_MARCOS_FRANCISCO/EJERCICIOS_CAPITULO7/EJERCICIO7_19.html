@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!-- Ejercicio 7.19: ej07_19.html -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio 7.19 - Problema del else suelto</title>
+   </head>
+   <body>
+      <h2>7.19 (Problema del <code>else</code> suelto) Determine la salida de cada uno de los siguientes segmentos de código, cuando <code>x</code> es 9 y <code>y</code> es 11, y cuando <code>x</code> es 11 y <code>y</code> es 9.</h2>
+
+      <h3>Inciso a) Código con la sangría correcta aplicada:</h3>
+      <pre>
+if ( x < 10 )
+   if ( y > 10 )
+      document.writeln( "&lt;p&gt;*****&lt;/p&gt;" );
+   else
+      document.writeln( "&lt;p&gt;#####&lt;/p&gt;" );
+document.writeln( "&lt;p&gt;$$$$$&lt;/p&gt;" );</pre>
+
+      <p><strong>Salida cuando <code>x = 9</code> y <code>y = 11</code>:</strong></p>
+      <pre>
+*****
+$$$$$</pre>
+
+      <p><strong>Salida cuando <code>x = 11</code> y <code>y = 9</code>:</strong></p>
+      <pre>
+$$$$$</pre>
+
+      <hr>
+
+      <h3>Inciso b) Código con la sangría correcta aplicada:</h3>
+      <pre>
+if ( x < 10 )
+{
+   if ( y > 10 )
+      document.writeln( "&lt;p&gt;*****&lt;/p&gt;" );
+}
+else
+{
+   document.writeln( "&lt;p&gt;#####&lt;/p&gt;" );
+   document.writeln( "&lt;p&gt;$$$$$&lt;/p&gt;" );
+}</pre>
+
+      <p><strong>Salida cuando <code>x = 9</code> y <code>y = 11</code>:</strong></p>
+      <pre>
+*****</pre>
+
+      <p><strong>Salida cuando <code>x = 11</code> y <code>y = 9</code>:</strong></p>
+      <pre>
+#####
+$$$$$</pre>
+   </body>
+</html>

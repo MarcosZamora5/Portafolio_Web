@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!-- Ejercicio 7.14: ej07_14.html -->
+<!-- Cálculo del sueldo bruto para tres empleados. -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio 7.14 - Sueldo bruto</title>
+      <script>
+         var empleado = 1;
+         var horas;
+         var tarifa;
+         var sueldoBruto;
+
+         document.writeln( "<h2>Nómina de Sueldos Brutos</h2>" );
+
+         while ( empleado <= 3 )
+         {
+            horas = parseFloat( window.prompt( "Empleado " + empleado + ": Introduzca las horas trabajadas la semana pasada:", "40" ) );
+            tarifa = parseFloat( window.prompt( "Empleado " + empleado + ": Introduzca la tarifa por hora:", "100" ) );
+
+            if ( horas <= 40 )
+               sueldoBruto = horas * tarifa;
+            else
+               sueldoBruto = ( 40 * tarifa ) + ( ( horas - 40 ) * tarifa * 1.5 );
+
+            document.writeln( "<p><strong>Empleado " + empleado + ":</strong><br>" );
+            document.writeln( "Horas trabajadas: " + horas + "<br>" );
+            document.writeln( "Tarifa por hora: $" + tarifa.toFixed( 2 ) + "<br>" );
+            document.writeln( "<strong>Sueldo bruto: $" + sueldoBruto.toFixed( 2 ) + "</strong></p>" );
+
+            ++empleado;
+         } // fin de while
+      </script>
+   </head>
+   <body>
+      <hr>
+      <h3>Pseudocódigo</h3>
+      <pre>
+Inicializar contador empleado = 1
+Mientras empleado <= 3
+   Pedir y leer las horas trabajadas del empleado
+   Pedir y leer la tarifa por hora del empleado
+   Si las horas son menores o iguales a 40
+      sueldoBruto = horas * tarifa
+   De lo contrario
+      sueldoBruto = (40 * tarifa) + ((horas - 40) * tarifa * 1.5)
+   Imprimir el sueldoBruto del empleado
+   Incrementar empleado en 1
+      </pre>
+   </body>
+</html>

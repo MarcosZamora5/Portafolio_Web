@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!-- Ejercicio 7.9: ej07_09.html -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio 7.9</title>
+   </head>
+   <body>
+      <h2>7.9 Identifique y corrija los <em>errores</em> en cada uno de los siguientes segmentos de código.</h2>
+      <ol type = "a">
+         <li>
+            <pre>
+if ( edad >= 65 );
+   document.writeln( "Edad es mayor o igual que 65" );
+else
+   document.writeln( "Edad es menor que 65 )";</pre>
+            <strong>Errores:</strong> 
+            1) El punto y coma (<code>;</code>) al final de <code>if ( edad >= 65 );</code> termina prematuramente la instrucción <code>if</code>, dejando el <code>else</code> sin un <code>if</code> asociado (error de sintaxis).<br>
+            2) En el segundo <code>document.writeln</code>, las comillas de cierre están colocadas después del paréntesis de cierre en lugar de antes.<br>
+            <strong>Corrección:</strong>
+            <pre>
+if ( edad >= 65 )
+   document.writeln( "Edad es mayor o igual que 65" );
+else
+   document.writeln( "Edad es menor que 65" );</pre>
+         </li>
+         <li>
+            <pre>
+var x = 1, total;
+while ( x <= 10 )
+{
+   total += x;
+   ++x;
+}</pre>
+            <strong>Error:</strong> La variable <code>total</code> no fue inicializada antes de usarse en el cálculo, por lo que su valor inicial es <code>undefined</code> y el resultado será <code>NaN</code>.<br>
+            <strong>Corrección:</strong> Inicializar <code>total = 0</code>.
+            <pre>
+var x = 1, total = 0;
+while ( x <= 10 )
+{
+   total += x;
+   ++x;
+}</pre>
+         </li>
+         <li>
+            <pre>
+var x = 1;
+var total = 0;
+while ( x <= 100 )
+   total += x;
+   ++x;</pre>
+            <strong>Error:</strong> Faltan las llaves <code>{ }</code> que delimitan el cuerpo del ciclo <code>while</code>. Sin ellas, sólo <code>total += x;</code> forma parte del ciclo y <code>++x;</code> nunca se ejecuta dentro de él, provocando un ciclo infinito.<br>
+            <strong>Corrección:</strong>
+            <pre>
+var x = 1;
+var total = 0;
+while ( x <= 100 )
+{
+   total += x;
+   ++x;
+}</pre>
+         </li>
+         <li>
+            <pre>
+var y = 5;
+while ( y > 0 )
+{
+   document.writeln( y );
+   ++y;
+}</pre>
+            <strong>Error:</strong> Incrementar <code>y</code> (<code>++y;</code>) cuando empieza en 5 y la condición es <code>y > 0</code> provoca un ciclo infinito, ya que <code>y</code> siempre será mayor que 0.<br>
+            <strong>Corrección:</strong> Cambiar <code>++y;</code> por <code>--y;</code> para decrementar la variable hasta que llegue a 0.
+            <pre>
+var y = 5;
+while ( y > 0 )
+{
+   document.writeln( y );
+   --y;
+}</pre>
+         </li>
+      </ol>
+   </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!-- Ejercicio 7.21: ej07_21.html -->
+<!-- Múltiplos de 2 en un ciclo infinito. -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio 7.21 - Ciclo infinito de múltiplos de 2</title>
+      <script>
+         var multiplo = 2;
+
+         // Código exacto solicitado por el ejercicio:
+         while ( true )
+         {
+            document.writeln( multiplo + "<br>" );
+            multiplo *= 2;
+
+            // Nota: en JavaScript, cuando el número supera el límite de punto flotante
+            // se convierte en Infinity. Si deseas evitar que el navegador se congele al probarlo,
+            // puedes cambiar la condición del while por: while ( multiplo != Infinity )
+            if ( multiplo == Infinity )
+               break;
+         }
+      </script>
+   </head>
+   <body>
+      <hr>
+      <h3>¿Qué ocurre cuando ejecuta este programa?</h3>
+      <p><strong>Respuesta:</strong> Al existir un ciclo infinito (sin condición de salida), los valores se duplican rápidamente hasta desbordar la capacidad numérica de JavaScript (mostrando <code>Infinity</code>), y el navegador web se bloquea o congela la pestaña, mostrando un cuadro de diálogo de advertencia indicando que una secuencia de comandos en la página no responde o está ralentizando el navegador.</p>
+   </body>
+</html>

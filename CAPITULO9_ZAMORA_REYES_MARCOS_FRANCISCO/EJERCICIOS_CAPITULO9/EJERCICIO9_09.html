@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!-- Ejercicio 9.9: EJERCICIO9_09.html -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Distancia entre dos puntos</title>
+      <script>
+         function iniciar()
+         {
+            var boton = document.getElementById( "botonCalcular" );
+            boton.addEventListener( "click", calcularDistanciaPuntos, false );
+         }
+
+         function distancia( x1, y1, x2, y2 )
+         {
+            return Math.sqrt( Math.pow( x2 - x1, 2 ) + Math.pow( y2 - y1, 2 ) );
+         }
+
+         function calcularDistanciaPuntos()
+         {
+            var x1 = parseFloat( document.getElementById( "x1" ).value );
+            var y1 = parseFloat( document.getElementById( "y1" ).value );
+            var x2 = parseFloat( document.getElementById( "x2" ).value );
+            var y2 = parseFloat( document.getElementById( "y2" ).value );
+            var resultado = document.getElementById( "resultado" );
+
+            var d = distancia( x1, y1, x2, y2 );
+            resultado.innerHTML = "La distancia entre los puntos es: " + d.toFixed( 4 );
+         }
+
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <form action = "#">
+         <p>Punto 1: X = <input id = "x1" type = "number" step = "any"> Y = <input id = "y1" type = "number" step = "any"></p>
+         <p>Punto 2: X = <input id = "x2" type = "number" step = "any"> Y = <input id = "y2" type = "number" step = "any"></p>
+         <p><input id = "botonCalcular" type = "button" value = "Calcular Distancia"></p>
+      </form>
+      <p id = "resultado"></p>
+   </body>
+</html>

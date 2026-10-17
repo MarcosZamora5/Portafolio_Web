@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!-- Ejercicio 9.25: EJERCICIO9_025.html -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Juego de adivinar el número</title>
+      <script>
+         var numeroSecreto;
+
+         function iniciar()
+         {
+            document.getElementById( "btnAdivinar" ).addEventListener( "click", comprobarIntento, false );
+            nuevoJuego();
+         }
+
+         function nuevoJuego()
+         {
+            numeroSecreto = Math.floor( Math.random() * 1000 ) + 1;
+            document.getElementById( "mensaje" ).innerHTML = "";
+            document.getElementById( "intento" ).value = "";
+         }
+
+         function comprobarIntento()
+         {
+            var intento = parseInt( document.getElementById( "intento" ).value );
+            var msg = document.getElementById( "mensaje" );
+
+            if ( isNaN( intento ) ) return;
+
+            if ( intento < numeroSecreto )
+            {
+               msg.style.color = "blue";
+               msg.innerHTML = "Demasiado bajo. Intente de nuevo.";
+               document.getElementById( "intento" ).value = "";
+            }
+            else if ( intento > numeroSecreto )
+            {
+               msg.style.color = "orange";
+               msg.innerHTML = "Demasiado alto. Intente de nuevo.";
+               document.getElementById( "intento" ).value = "";
+            }
+            else
+            {
+               msg.style.color = "green";
+               msg.innerHTML = "¡Felicidades! ¡Adivinó el número!<br><input type='button' value='Jugar de nuevo' onclick='nuevoJuego()'>";
+               document.getElementById( "intento" ).value = "";
+            }
+         }
+
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <h2>Adivine un número entre 1 y 1000</h2>
+      <form action = "#">
+         <p><label>Su intento: <input id = "intento" type = "number" min = "1" max = "1000"></label>
+            <input id = "btnAdivinar" type = "button" value = "Enviar Intento"></p>
+      </form>
+      <p id = "mensaje" style = "font-weight: bold; font-size: 1.1em;"></p>
+   </body>
+</html>

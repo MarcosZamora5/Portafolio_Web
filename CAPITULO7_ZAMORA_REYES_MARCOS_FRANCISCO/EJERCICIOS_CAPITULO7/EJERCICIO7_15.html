@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!-- Ejercicio 7.15: ej07_15.html -->
+<!-- Encontrar el valor más grande entre 10 números. -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Ejercicio 7.15 - Encontrar el valor más grande</title>
+      <script>
+         var contador = 1; // contador para contar hasta 10
+         var numero;       // el entero más reciente introducido por el usuario
+         var mayor;        // el número más grande encontrado hasta ahora
+
+         numero = parseInt( window.prompt( "Escriba el número 1 (de 10):", "0" ) );
+         mayor = numero;
+
+         while ( contador < 10 )
+         {
+            ++contador;
+            numero = parseInt( window.prompt( "Escriba el número " + contador + " (de 10):", "0" ) );
+
+            if ( numero > mayor )
+               mayor = numero;
+         } // fin de while
+
+         document.writeln( "<h1>El número más grande es: " + mayor + "</h1>" );
+      </script>
+   </head>
+   <body>
+      <hr>
+      <h3>Pseudocódigo</h3>
+      <pre>
+Inicializar contador = 1
+Pedir el primer número y asignarlo a numero
+Asignar numero a mayor
+
+Mientras contador < 10
+   Incrementar contador en 1
+   Pedir el siguiente número y asignarlo a numero
+   Si numero es mayor que mayor
+      Asignar numero a mayor
+
+Imprimir el valor de mayor
+      </pre>
+   </body>
+</html>

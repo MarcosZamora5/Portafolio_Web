@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!-- Ejercicio 9.14: EJERCICIO9_014.html -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Función múltiplo</title>
+      <script>
+         function iniciar()
+         {
+            var boton = document.getElementById( "botonCalcular" );
+            boton.addEventListener( "click", verificarMultiplo, false );
+         }
+
+         function multiplo( primero, segundo )
+         {
+            return ( segundo % primero === 0 );
+         }
+
+         function verificarMultiplo()
+         {
+            var num1 = parseInt( document.getElementById( "num1" ).value );
+            var num2 = parseInt( document.getElementById( "num2" ).value );
+            var resultado = document.getElementById( "resultado" );
+
+            if ( multiplo( num1, num2 ) )
+            {
+               resultado.innerHTML = num2 + " SÍ es múltiplo de " + num1 + " (true).";
+            }
+            else
+            {
+               resultado.innerHTML = num2 + " NO es múltiplo de " + num1 + " (false).";
+            }
+         }
+
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <form action = "#">
+         <p><label>Primer número: <input id = "num1" type = "number"></label></p>
+         <p><label>Segundo número: <input id = "num2" type = "number"></label></p>
+         <p><input id = "botonCalcular" type = "button" value = "Verificar Múltiplo"></p>
+      </form>
+      <p id = "resultado"></p>
+   </body>
+</html>

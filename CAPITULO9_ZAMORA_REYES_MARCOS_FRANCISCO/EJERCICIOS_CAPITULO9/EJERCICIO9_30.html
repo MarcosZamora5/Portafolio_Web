@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<!-- Ejercicio 9.30: EJERCICIO9_030.html -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Análisis de función misterio</title>
+   </head>
+   <body>
+      <h2>9.30 ¿Qué hace la siguiente función?</h2>
+      <pre>
+function misterio( a, b )
+{
+   if ( b == 1)
+      return a;
+   else
+      return a + misterio(a, b - 1);
+}
+      </pre>
+      <p>
+         <strong>Respuesta:</strong> La función calcula el producto de la multiplicación de dos números enteros <code>a</code> y <code>b</code> mediante sumas recursivas sucesivas (esencialmente simula la operación <code>a * b</code> utilizando únicamente sumas). Por ejemplo, si se llama <code>misterio(4, 3)</code>, realiza la suma <code>4 + 4 + 4</code>, devolviendo como resultado <code>12</code>.
+      </p>
+   </body>
+</html>

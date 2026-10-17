@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!-- Ejercicio 9.26: EJERCICIO9_026.html -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Adivinar el número con contador de intentos</title>
+      <script>
+         var numeroSecreto;
+         var contadorIntentos = 0;
+
+         function iniciar()
+         {
+            document.getElementById( "btnAdivinar" ).addEventListener( "click", comprobarIntento, false );
+            nuevoJuego();
+         }
+
+         function nuevoJuego()
+         {
+            numeroSecreto = Math.floor( Math.random() * 1000 ) + 1;
+            contadorIntentos = 0;
+            document.getElementById( "mensaje" ).innerHTML = "";
+            document.getElementById( "intento" ).value = "";
+         }
+
+         function comprobarIntento()
+         {
+            var intento = parseInt( document.getElementById( "intento" ).value );
+            var msg = document.getElementById( "mensaje" );
+
+            if ( isNaN( intento ) ) return;
+
+            contadorIntentos++;
+
+            if ( intento < numeroSecreto )
+            {
+               msg.style.color = "blue";
+               msg.innerHTML = "Demasiado bajo. Intente de nuevo. (Intentos: " + contadorIntentos + ")";
+               document.getElementById( "intento" ).value = "";
+            }
+            else if ( intento > numeroSecreto )
+            {
+               msg.style.color = "orange";
+               msg.innerHTML = "Demasiado alto. Intente de nuevo. (Intentos: " + contadorIntentos + ")";
+               document.getElementById( "intento" ).value = "";
+            }
+            else
+            {
+               var evaluacion = "";
+               if ( contadorIntentos <= 10 )
+               {
+                  evaluacion = " ¡Conoce el secreto o tuvo suerte!";
+               }
+               else
+               {
+                  evaluacion = " ¡Debería poder hacerlo mejor!";
+               }
+
+               msg.style.color = "green";
+               msg.innerHTML = "¡Felicidades! ¡Adivinó el número en " + contadorIntentos + " intentos!" + evaluacion + 
+                  "<br><br><em>Nota sobre búsqueda binaria:</em> Con cada intento correcto se reduce el espacio de búsqueda a la mitad, por lo que en el peor de los casos se requieren máximo 10 intentos para un rango de 1000.<br>" +
+                  "<input type='button' value='Jugar de nuevo' onclick='nuevoJuego()'>";
+               document.getElementById( "intento" ).value = "";
+            }
+         }
+
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <h2>Adivine un número entre 1 y 1000</h2>
+      <form action = "#">
+         <p><label>Su intento: <input id = "intento" type = "number" min = "1" max = "1000"></label>
+            <input id = "btnAdivinar" type = "button" value = "Enviar Intento"></p>
+      </form>
+      <p id = "mensaje" style = "font-weight: bold; font-size: 1.1em;"></p>
+   </body>
+</html>

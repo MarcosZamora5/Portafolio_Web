@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!-- Ejercicio 9.16: EJERCICIO9_016.html -->
+<html>
+   <head>
+      <meta charset = "utf-8">
+      <title>Operaciones y separación de dígitos</title>
+      <script>
+         function iniciar()
+         {
+            var boton = document.getElementById( "botonProcesar" );
+            boton.addEventListener( "click", ejecutarProceso, false );
+         }
+
+         // a) Parte entera del cociente
+         function cocienteEntero( a, b )
+         {
+            return Math.floor( a / b );
+         }
+
+         // b) Residuo entero
+         function residuoEntero( a, b )
+         {
+            return a % b;
+         }
+
+         // c) Mostrar dígitos separados por dos espacios
+         function mostrarDigitos( numero )
+         {
+            if ( numero < 1 || numero > 99999 )
+            {
+               return "Número fuera del rango permitido (1 a 99999).";
+            }
+
+            var divisor = 10000;
+            var resultadoStr = "";
+            var iniciarImpresion = false;
+
+            while ( divisor >= 1 )
+            {
+               var digito = cocienteEntero( numero, divisor );
+               
+               if ( digito !== 0 || divisor === 1 || iniciarImpresion )
+               {
+                  iniciarImpresion = true;
+                  resultadoStr += digito + "&nbsp;&nbsp;&nbsp;";
+               }
+
+               numero = residuoEntero( numero, divisor );
+               divisor = cocienteEntero( divisor, 10 );
+            }
+
+            return resultadoStr;
+         }
+
+         // d) Secuencia con diálogo prompt
+         function ejecutarProceso()
+         {
+            var entrada = window.prompt( "Introduzca un entero entre 1 y 99999:", "4562" );
+            var num = parseInt( entrada );
+            var divRes = document.getElementById( "resultado" );
+
+            divRes.innerHTML = "<p><strong>Dígitos separados:</strong> " + mostrarDigitos( num ) + "</p>";
+         }
+
+         window.addEventListener( "load", iniciar, false );
+      </script>
+   </head>
+   <body>
+      <form action = "#">
+         <p><input id = "botonProcesar" type = "button" value = "Procesar Entero con Prompt"></p>
+      </form>
+      <div id = "resultado"></div>
+   </body>
+</html>
