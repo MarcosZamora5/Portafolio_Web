@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 11.20 - Mi propio lastIndexOf</title>
+      <script>
+         function miLastIndexOf(cadena, subcadena, inicio) {
+            var maxInicio = cadena.length - subcadena.length;
+            var posInicio = (inicio !== undefined) ? Math.min(parseInt(inicio), maxInicio) : maxInicio;
+            if (subcadena.length === 0) return posInicio;
+
+            for (var i = posInicio; i >= 0; --i) {
+               var coincide = true;
+               for (var j = 0; j < subcadena.length; ++j) {
+                  if (cadena.charAt(i + j) !== subcadena.charAt(j)) {
+                     coincide = false;
+                     break;
+                  }
+               }
+               if (coincide) return i;
+            }
+            return -1;
+         }
+
+         function probarBusqueda() {
+            var texto = document.getElementById("texto").value;
+            var buscar = document.getElementById("buscar").value;
+            var indice = miLastIndexOf(texto, buscar);
+
+            document.getElementById("salida").innerHTML =
+               "<p>Resultado con <code>miLastIndexOf</code>: <strong>" + indice + "</strong></p>";
+         }
+
+         function iniciar() {
+            document.getElementById("boton").addEventListener("click", probarBusqueda, false);
+         }
+         window.addEventListener("load", iniciar, false);
+      </script>
+   </head>
+   <body>
+      <h2>Ejercicio 11.20 - Versión propia de String lastIndexOf</h2>
+      <form action="#">
+         <p><label>Cadena principal: <input id="texto" type="text" value="sol luna sol estrella sol"></label></p>
+         <p><label>Subcadena a buscar: <input id="buscar" type="text" value="sol"></label>
+            <input id="boton" type="button" value="Buscar con miLastIndexOf"></p>
+      </form>
+      <div id="salida"></div>
+   </body>
+</html>

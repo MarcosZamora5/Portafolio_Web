@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio de autoevaluación 10.3</title>
+      <script>
+         function iniciar() {
+            // a) Declarar un arreglo con 10 elementos e inicializar en 0
+            var fracciones = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ];
+
+            // b) Hacer referencia al elemento 3 del arreglo: fracciones[ 3 ]
+            // c) Hacer referencia al elemento 4 del arreglo: fracciones[ 4 ]
+
+            // d) Asignar el valor 1.667 al elemento 9 del arreglo
+            fracciones[ 9 ] = 1.667;
+
+            // e) Asignar el valor 3.333 al séptimo elemento del arreglo (índice 6)
+            fracciones[ 6 ] = 3.333;
+
+            // f) Sumar todos los elementos del arreglo mediante for...in
+            var total = 0;
+            for ( var x in fracciones ) {
+               total += fracciones[ x ];
+            }
+
+            document.getElementById("salida").innerHTML =
+               "<p><strong>a)</strong> <code>var fracciones = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ];</code></p>" +
+               "<p><strong>b)</strong> <code>fracciones[ 3 ]</code> (Valor actual: " + fracciones[ 3 ] + ")</p>" +
+               "<p><strong>c)</strong> <code>fracciones[ 4 ]</code> (Valor actual: " + fracciones[ 4 ] + ")</p>" +
+               "<p><strong>d)</strong> <code>fracciones[ 9 ] = 1.667;</code></p>" +
+               "<p><strong>e)</strong> <code>fracciones[ 6 ] = 3.333;</code></p>" +
+               "<p><strong>f)</strong> Suma total calculada con <code>for...in</code>: <strong>" + total.toFixed(3) + "</strong></p>";
+         }
+         window.addEventListener("load", iniciar, false);
+      </script>
+   </head>
+   <body>
+      <h2>Ejercicio 10.3 - Arreglo fracciones</h2>
+      <div id="salida"></div>
+   </body>
+</html>

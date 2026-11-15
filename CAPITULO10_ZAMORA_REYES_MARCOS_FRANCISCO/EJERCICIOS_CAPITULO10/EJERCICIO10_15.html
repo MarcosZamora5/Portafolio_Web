@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 10.15 - Gráficos de tortuga</title>
+      <script>
+         function ejecutarTortuga() {
+            var piso = new Array( 20 );
+            for ( var f = 0; f < 20; ++f ) {
+               piso[ f ] = new Array( 20 );
+               for ( var c = 0; c < 20; ++c ) {
+                  piso[ f ][ c ] = 0;
+               }
+            }
+
+            // Comandos de ejemplo de la Fig. 10.23 (cuadrado de 12 x 12)
+            var comandos = [
+               [ 2 ],
+               [ 5, 12 ],
+               [ 3 ],
+               [ 5, 12 ],
+               [ 3 ],
+               [ 5, 12 ],
+               [ 3 ],
+               [ 5, 12 ],
+               [ 1 ],
+               [ 6 ],
+               [ 9 ]
+            ];
+
+            var fila = 0, col = 0;
+            var plumaAbajo = false;
+            var direccion = 0; // 0: derecha, 1: abajo, 2: izquierda, 3: arriba
+            var dibujo = "";
+
+            for ( var i = 0; i < comandos.length; ++i ) {
+               var cmd = comandos[ i ][ 0 ];
+               if ( cmd === 1 ) {
+                  plumaAbajo = false;
+               } else if ( cmd === 2 ) {
+                  plumaAbajo = true;
+                  piso[ fila ][ col ] = 1;
+               } else if ( cmd === 3 ) {
+                  direccion = ( direccion + 1 ) % 4;
+               } else if ( cmd === 4 ) {
+                  direccion = ( direccion + 3 ) % 4;
+               } else if ( cmd === 5 ) {
+                  var pasos = comandos[ i ][ 1 ];
+                  for ( var p = 0; p < pasos; ++p ) {
+                     if ( direccion === 0 && col < 19 ) ++col;
+                     else if ( direccion === 1 && fila < 19 ) ++fila;
+                     else if ( direccion === 2 && col > 0 ) --col;
+                     else if ( direccion === 3 && fila > 0 ) --fila;
+
+                     if ( plumaAbajo ) {
+                        piso[ fila ][ col ] = 1;
+                     }
+                  }
+               } else if ( cmd === 6 ) {
+                  for ( var f = 0; f < 20; ++f ) {
+                     for ( var c = 0; c < 20; ++c ) {
+                        dibujo += ( piso[ f ][ c ] === 1 ) ? "* " : "  ";
+                     }
+                     dibujo += "\n";
+                  }
+               } else if ( cmd === 9 ) {
+                  break;
+               }
+            }
+
+            document.getElementById("salida").innerHTML = "<pre style='font-size:16px; line-height:1.1;'>" + dibujo + "</pre>";
+         }
+         window.addEventListener("load", ejecutarTortuga, false);
+      </script>
+   </head>
+   <body>
+      <h2>Ejercicio 10.15 - Gráficos de tortuga (Cuadrado 12 × 12 en piso de 20 × 20)</h2>
+      <div id="salida"></div>
+   </body>
+</html>

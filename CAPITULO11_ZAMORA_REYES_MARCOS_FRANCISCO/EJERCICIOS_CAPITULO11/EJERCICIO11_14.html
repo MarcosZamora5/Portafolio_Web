@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 11.14</title>
+      <script>
+         function contarAlfabeto() {
+            var texto = document.getElementById("texto").value.toLowerCase();
+            var alfabeto = "abcdefghijklmnopqrstuvwxyz";
+            var conteos = new Array(26);
+            var salidaTexto = "Letra\tOcurrencias\n-------------------\n";
+
+            for (var i = 0; i < alfabeto.length; ++i) {
+               var letra = alfabeto.charAt(i);
+               var cuenta = 0;
+               var pos = texto.indexOf(letra);
+               while (pos !== -1) {
+                  ++cuenta;
+                  pos = texto.indexOf(letra, pos + 1);
+               }
+               conteos[i] = cuenta;
+               salidaTexto += letra + "\t" + conteos[i] + "\n";
+            }
+            document.getElementById("resultado").value = salidaTexto;
+         }
+         function iniciar() {
+            document.getElementById("btnAnalizar").addEventListener("click", contarAlfabeto, false);
+            contarAlfabeto();
+         }
+         window.addEventListener("load", iniciar, false);
+      </script>
+   </head>
+   <body>
+      <h2>Ejercicio 11.14 - Frecuencia de cada letra del alfabeto</h2>
+      <p><textarea id="texto" rows="3" cols="55">El veloz murcielago hindu comia feliz cardillo y kiwi.</textarea></p>
+      <p><input id="btnAnalizar" type="button" value="Contar letras"></p>
+      <p><textarea id="resultado" rows="15" cols="30" readonly></textarea></p>
+   </body>
+</html>

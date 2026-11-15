@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 11.12</title>
+      <script>
+         function convertirTexto() {
+            var texto = document.getElementById("entrada").value;
+            document.getElementById("salida").innerHTML =
+               "<p><strong>Mayúsculas:</strong> " + texto.toUpperCase() + "</p>" +
+               "<p><strong>Minúsculas:</strong> " + texto.toLowerCase() + "</p>";
+         }
+         function iniciar() {
+            document.getElementById("btnConvertir").addEventListener("click", convertirTexto, false);
+         }
+         window.addEventListener("load", iniciar, false);
+      </script>
+   </head>
+   <body>
+      <h2>Ejercicio 11.12 - Conversión a mayúsculas y minúsculas</h2>
+      <form action="#">
+         <input id="entrada" type="text" size="40" value="Programación Web con JavaScript">
+         <input id="btnConvertir" type="button" value="Mostrar">
+      </form>
+      <div id="salida"></div>
+   </body>
+</html>

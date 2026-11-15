@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ejercicio 11.26 – Conversión métrica</title>
+<style>
+  :root { color-scheme: light dark; --ac: #0b6e6e; --bd: color-mix(in srgb, CanvasText 25%, transparent); }
+  body { font: 16px/1.5 Georgia, serif; max-width: 760px; margin: 0 auto; padding: 1rem; }
+  h1 { font-size: 1.4rem; }
+  nav { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
+  button { font: inherit; padding: .4rem .8rem; border: 1px solid var(--bd); background: Canvas; color: CanvasText; border-radius: 6px; cursor: pointer; }
+  button.on, button.go { background: var(--ac); color: #fff; border-color: var(--ac); }
+  button:focus-visible, input:focus-visible { outline: 3px solid var(--ac); outline-offset: 2px; }
+  input { font: inherit; padding: .4rem; width: 100%; box-sizing: border-box; border: 1px solid var(--bd); border-radius: 6px; margin: .4rem 0; background: Canvas; color: CanvasText; }
+  section { display: none; } section.on { display: block; }
+  .out { padding: .6rem .8rem; border-left: 4px solid var(--ac); background: color-mix(in srgb, var(--ac) 10%, transparent); margin-top: .6rem; min-height: 1.5rem; }
+  table.cw { border-collapse: collapse; margin: .8rem 0; }
+  .cw td { width: 32px; height: 32px; border: 1px solid CanvasText; position: relative; text-align: center; font: bold 1rem monospace; padding: 0; }
+  .cw td.v { border: 0; }
+  .cw sup { position: absolute; top: 1px; left: 2px; font-size: .55rem; font-weight: normal; }
+  .scroll { overflow-x: auto; }
+</style>
+</head>
+<body>
+<h1>Ejercicio 11.26: Conversión métrica</h1>
+<section class="on" id="s26">
+  <p>Haz una pregunta como: <i>¿Cuántas pulgadas hay en 2 metros?</i> Prueba también una inválida: <i>¿Cuántos pies hay en 5 kilogramos?</i></p>
+  <label for="preg">Pregunta</label>
+  <input id="preg" value="¿Cuántas pulgadas hay en 2 metros?">
+  <button class="go" id="b26">Responder</button>
+  <div class="out" id="o26"></div>
+</section>
+<script>
+/* ============ 11.26 Conversión métrica ============ */
+// [tipo, factor a la unidad base, nombre singular]
+const UNIDADES = [
+  ["longitud", .001, "milimetro"], ["longitud", .01, "centimetro"], ["longitud", 1, "metro"],
+  ["longitud", 1000, "kilometro"], ["longitud", .0254, "pulgada"], ["longitud", .3048, "pie"],
+  ["longitud", .9144, "yarda"], ["longitud", 1609.344, "milla"],
+  ["masa", 1, "gramo"], ["masa", 1000, "kilogramo"], ["masa", 28.3495, "onza"], ["masa", 453.592, "libra"],
+  ["volumen", .001, "mililitro"], ["volumen", 1, "litro"], ["volumen", .236588, "taza"],
+  ["volumen", .473176, "pinta"], ["volumen", .946353, "cuarto"], ["volumen", 3.78541, "galon"]
+];
+const mapaUnidades = {};
+for (const [tipo, factor, nombre] of UNIDADES) {
+  const plural = nombre.endsWith("on") ? nombre + "es" : nombre + "s";
+  mapaUnidades[nombre] = mapaUnidades[plural] = { tipo, factor, nombre, plural };
+}
+const sinAcentos = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+
+function responderConversion(pregunta) {
+  const q = sinAcentos(pregunta).replace(/[¿?]/g, "");
+  const m = q.match(/cuant\w+\s+(\w+)\s+hay\s+en\s+(-?[\d.]+)\s+(\w+)/);
+  if (!m) return "No entendí la pregunta. Usa el formato: ¿Cuántas pulgadas hay en 2 metros?";
+  const destino = mapaUnidades[m[1]], origen = mapaUnidades[m[3]], cant = parseFloat(m[2]);
+  if (!destino || !origen) return "Unidad desconocida: " + (!destino ? m[1] : m[3]) + ".";
+  if (destino.tipo !== origen.tipo)
+    return `Conversión inválida: "${m[3]}" son unidades de ${origen.tipo}, mientras que "${m[1]}" son unidades de ${destino.tipo}.`;
+  const res = cant * origen.factor / destino.factor;
+  return `${cant} ${m[3]} = ${+res.toFixed(4)} ${m[1]}`;
+}
+document.getElementById("b26").onclick = () =>
+  document.getElementById("o26").textContent = responderConversion(document.getElementById("preg").value);
+</script>
+</body>
+</html>

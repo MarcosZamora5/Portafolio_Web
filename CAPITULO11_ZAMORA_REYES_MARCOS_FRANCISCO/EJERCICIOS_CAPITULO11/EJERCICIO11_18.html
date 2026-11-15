@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 11.18</title>
+      <script>
+         function generarTablaCodigos() {
+            var salida = "Código\tCarácter\n----------------\n";
+            for (var i = 0; i <= 255; ++i) {
+               var numFormateado = ("000" + i).slice(-3);
+               salida += numFormateado + "\t" + String.fromCharCode(i) + "\n";
+            }
+            document.getElementById("areaSalida").value = salida;
+         }
+         window.addEventListener("load", generarTablaCodigos, false);
+      </script>
+   </head>
+   <body>
+      <h2>Ejercicio 11.18 - Caracteres del rango 000 a 255</h2>
+      <textarea id="areaSalida" rows="20" cols="40" readonly></textarea>
+   </body>
+</html>

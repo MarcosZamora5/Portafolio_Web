@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 10.17 - La tortuga y la liebre</title>
+      <script>
+         function iniciarCarrera() {
+            var posTortuga = 1;
+            var posLiebre = 1;
+            var registro = "PUM!!!\nY ARRANCAN!!!\n\n";
+
+            while ( posTortuga < 70 && posLiebre < 70 ) {
+               // Movimiento de la tortuga
+               var i = Math.floor( 1 + Math.random() * 10 );
+               if ( i >= 1 && i <= 5 ) posTortuga += 3;       // Paso pesado rápido (50%)
+               else if ( i >= 6 && i <= 7 ) posTortuga -= 6;  // Resbalón (20%)
+               else posTortuga += 1;                          // Paso pesado lento (30%)
+
+               if ( posTortuga < 1 ) posTortuga = 1;
+
+               // Movimiento de la liebre
+               var j = Math.floor( 1 + Math.random() * 10 );
+               if ( j >= 1 && j <= 2 ) posLiebre += 0;        // Dormir (20%)
+               else if ( j >= 3 && j <= 4 ) posLiebre += 9;   // Gran salto (20%)
+               else if ( j === 5 ) posLiebre -= 12;           // Gran resbalón (10%)
+               else if ( j >= 6 && j <= 8 ) posLiebre += 1;   // Pequeño salto (30%)
+               else posLiebre -= 2;                           // Pequeño resbalón (20%)
+
+               if ( posLiebre < 1 ) posLiebre = 1;
+
+               // Construir línea de 70 posiciones
+               var linea = "";
+               for ( var p = 1; p <= 70; ++p ) {
+                  if ( p === posTortuga && p === posLiebre ) {
+                     linea += "OUCH!!!";
+                     p += 6;
+                  } else if ( p === posTortuga ) {
+                     linea += "T";
+                  } else if ( p === posLiebre ) {
+                     linea += "H";
+                  } else {
+                     linea += ".";
+                  }
+               }
+               registro += linea + "\n";
+            }
+
+            registro += "\n";
+            if ( posTortuga >= 70 && posLiebre >= 70 ) {
+               registro += "Es un empate.";
+            } else if ( posTortuga >= 70 ) {
+               registro += "LA TORTUGA GANA!!! YAY!!!";
+            } else {
+               registro += "La liebre gana. Que mal.";
+            }
+
+            document.getElementById("salida").innerHTML = "<pre style='font-family:monospace;'>" + registro + "</pre>";
+         }
+
+         function iniciar() {
+            document.getElementById("botonCarrera").addEventListener("click", iniciarCarrera, false);
+            iniciarCarrera();
+         }
+         window.addEventListener("load", iniciar, false);
+      </script>
+   </head>
+   <body>
+      <h2>Ejercicio 10.17 - Simulación: La tortuga y la liebre</h2>
+      <input id="botonCarrera" type="button" value="Repetir carrera">
+      <div id="salida"></div>
+   </body>
+</html>

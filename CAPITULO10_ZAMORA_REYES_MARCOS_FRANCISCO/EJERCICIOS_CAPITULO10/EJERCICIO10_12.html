@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 10.12 - Eliminación de duplicados</title>
+      <script>
+         var numerosUnicos = [];
+         var intentos = 0;
+
+         function agregarNumero() {
+            if ( intentos >= 10 ) return;
+
+            var campo = document.getElementById("entradaNumero");
+            var num = parseInt(campo.value);
+
+            if ( isNaN(num) || num < 10 || num > 100 ) {
+               alert("Por favor introduzca un número entero entre 10 y 100.");
+               return;
+            }
+
+            ++intentos;
+            if ( numerosUnicos.indexOf(num) === -1 ) {
+               numerosUnicos.push(num);
+            }
+
+            campo.value = "";
+            document.getElementById("salida").innerHTML =
+               "<p>Números ingresados: <strong>" + intentos + " de 10</strong></p>" +
+               "<p>Valores sin duplicados: <strong>" + numerosUnicos.join(", ") + "</strong></p>";
+         }
+
+         function iniciar() {
+            document.getElementById("botonIngresar").addEventListener("click", agregarNumero, false);
+         }
+         window.addEventListener("load", iniciar, false);
+      </script>
+   </head>
+   <body>
+      <h2>Ejercicio 10.12 - Eliminación de duplicados (10 números entre 10 y 100)</h2>
+      <form action="#">
+         <label>Número (10 - 100):
+            <input id="entradaNumero" type="number" min="10" max="100">
+         </label>
+         <input id="botonIngresar" type="button" value="Ingresar número">
+      </form>
+      <div id="salida"></div>
+   </body>
+</html>

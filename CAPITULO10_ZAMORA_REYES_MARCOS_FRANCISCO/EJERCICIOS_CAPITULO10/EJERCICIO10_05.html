@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio de autoevaluación 10.5</title>
+   </head>
+   <body>
+      <h2>Ejercicio 10.5 - Encuentre el o los errores y corríjalos:</h2>
+      <ol type="a">
+         <li>
+            <pre>
+var b = new Array( 10 );
+var longitud = b.length;
+
+for ( var i = 0; i <= longitud; ++i )
+{
+   b[ i ] = 1;
+}</pre>
+            <p><strong>Error:</strong> Se hace referencia al elemento de un arreglo fuera de los límites del arreglo (<code>b[10]</code>) [Nota: en realidad éste es un error lógico y no sintáctico].<br>
+            <strong>Corrección:</strong> Cambie el operador <code><=</code> a <code><</code> en la condición del ciclo <code>for ( var i = 0; i < longitud; ++i )</code>.</p>
+         </li>
+         <li>
+            <pre>
+var a = [ [ 1, 2 ], [ 3, 4 ] ];
+a[ 1, 1 ] = 5;</pre>
+            <p><strong>Error:</strong> El indexado de arreglos bidimensionales se realiza de manera incorrecta usando coma dentro de un mismo corchete.<br>
+            <strong>Corrección:</strong> Cambie la instrucción a <code>a[ 1 ][ 1 ] = 5;</code>.</p>
+         </li>
+      </ol>
+   </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 11.13</title>
+      <script>
+         function contarCaracter() {
+            var texto = document.getElementById("texto").value.toLowerCase();
+            var car = document.getElementById("caracter").value.toLowerCase();
+            if (!car) return;
+
+            var contador = 0;
+            var pos = texto.indexOf(car);
+            while (pos !== -1) {
+               ++contador;
+               pos = texto.indexOf(car, pos + 1);
+            }
+            document.getElementById("salida").innerHTML =
+               "<p>El carácter <strong>'" + car + "'</strong> aparece <strong>" + contador + "</strong> veces.</p>";
+         }
+         function iniciar() {
+            document.getElementById("btnContar").addEventListener("click", contarCaracter, false);
+         }
+         window.addEventListener("load", iniciar, false);
+      </script>
+   </head>
+   <body>
+      <h2>Ejercicio 11.13 - Número de ocurrencias de un carácter</h2>
+      <form action="#">
+         <p><textarea id="texto" rows="4" cols="50">Tres tristes tigres tragaban trigo en un trigal.</textarea></p>
+         <p><label>Carácter a buscar: <input id="caracter" type="text" maxlength="1" value="t" size="3"></label>
+            <input id="btnContar" type="button" value="Buscar con indexOf"></p>
+      </form>
+      <div id="salida"></div>
+   </body>
+</html>

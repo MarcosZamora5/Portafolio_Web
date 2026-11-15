@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 11.23 - Análisis de textos</title>
+      <style>
+         body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+         }
+         textarea {
+            width: 100%;
+            max-width: 600px;
+            height: 90px;
+            margin-bottom: 10px;
+         }
+         .contenedor-tablas {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 15px;
+         }
+         table {
+            border-collapse: collapse;
+            background-color: #f9f9ff;
+         }
+         th, td {
+            border: 1px solid #333;
+            padding: 5px 10px;
+            text-align: left;
+         }
+         th {
+            background-color: #0056b3;
+            color: white;
+         }
+      </style>
+      <script>
+         function analizarTexto() {
+            var textoOriginal = document.getElementById("textoEntrada").value;
+            var textoMinusculas = textoOriginal.toLowerCase();
+
+            // a) Ocurrencias de cada letra del alfabeto
+            var alfabeto = "abcdefghijklmnñopqrstuvwxyz";
+            var conteoLetras = new Array(alfabeto.length);
+            for (var i = 0; i < alfabeto.length; ++i) {
+               conteoLetras[i] = 0;
+            }
+
+            // Reemplazar vocales acentuadas para contarlas junto a su letra base
+            var textoSinAcentos = textoMinusculas
+               .replace(/á/g, "a")
+               .replace(/é/g, "e")
+               .replace(/í/g, "i")
+               .replace(/ó/g, "o")
+               .replace(/ú/g, "u")
+               .replace(/ü/g, "u");
+
+            for (var i = 0; i < textoSinAcentos.length; ++i) {
+               var pos = alfabeto.indexOf(textoSinAcentos.charAt(i));
+               if (pos !== -1) {
+                  ++conteoLetras[pos];
+               }
+            }
+
+            var htmlA = "<div><h3>a) Frecuencia de letras</h3><table><thead><tr><th>Letra</th><th>Ocurrencias</th></tr></thead><tbody>";
+            for (var i = 0; i < alfabeto.length; ++i) {
+               htmlA += "<tr><td>" + alfabeto.charAt(i) + "</td><td>" + conteoLetras[i] + "</td></tr>";
+            }
+            htmlA += "</tbody></table></div>";
+
+            // Limpiar signos de puntuación y separar en palabras para b) y c)
+            var textoLimpio = textoMinusculas.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()¿?¡!"'\[\]]/g, "");
+            var tokens = textoLimpio.trim().split(/\s+/);
+            var palabras = [];
+            for (var i = 0; i < tokens.length; ++i) {
+               if (tokens[i].length > 0) {
+                  palabras.push(tokens[i]);
+               }
+            }
+
+            // b) Conteo de palabras según su longitud
+            var maxLong = 8;
+            for (var i = 0; i < palabras.length; ++i) {
+               if (palabras[i].length > maxLong) {
+                  maxLong = palabras[i].length;
+               }
+            }
+
+            var conteoLongitud = new Array(maxLong + 1);
+            for (var i = 1; i <= maxLong; ++i) {
+               conteoLongitud[i] = 0;
+            }
+
+            for (var i = 0; i < palabras.length; ++i) {
+               ++conteoLongitud[palabras[i].length];
+            }
+
+            var htmlB = "<div><h3>b) Longitud de palabra</h3><table><thead><tr><th>Longitud de palabra</th><th>Ocurrencias</th></tr></thead><tbody>";
+            for (var i = 1; i <= maxLong; ++i) {
+               htmlB += "<tr><td>" + i + "</td><td>" + conteoLongitud[i] + "</td></tr>";
+            }
+            htmlB += "</tbody></table></div>";
+
+            // c) Ocurrencias de cada palabra distinta (en orden de aparición y orden alfabético)
+            var palabrasUnicas = [];
+            var frecuenciaPalabras = [];
+
+            for (var i = 0; i < palabras.length; ++i) {
+               var idx = palabrasUnicas.indexOf(palabras[i]);
+               if (idx === -1) {
+                  palabrasUnicas.push(palabras[i]);
+                  frecuenciaPalabras.push(1);
+               } else {
+                  ++frecuenciaPalabras[idx];
+               }
+            }
+
+            var htmlC = "<div><h3>c) Palabras (Orden de aparición)</h3><table><thead><tr><th>Palabra</th><th>Ocurrencias</th></tr></thead><tbody>";
+            for (var i = 0; i < palabrasUnicas.length; ++i) {
+               htmlC += "<tr><td>" + palabrasUnicas[i] + "</td><td>" + frecuenciaPalabras[i] + "</td></tr>";
+            }
+            htmlC += "</tbody></table></div>";
+
+            // Orden alfabético
+            var copiaOrdenada = palabrasUnicas.slice().sort();
+            var htmlCAlfa = "<div><h3>c) Palabras (Orden alfabético)</h3><table><thead><tr><th>Palabra</th><th>Ocurrencias</th></tr></thead><tbody>";
+            for (var i = 0; i < copiaOrdenada.length; ++i) {
+               var idxOriginal = palabrasUnicas.indexOf(copiaOrdenada[i]);
+               htmlCAlfa += "<tr><td>" + copiaOrdenada[i] + "</td><td>" + frecuenciaPalabras[idxOriginal] + "</td></tr>";
+            }
+            htmlCAlfa += "</tbody></table></div>";
+
+            document.getElementById("salida").innerHTML = htmlA + htmlB + htmlC + htmlCAlfa;
+         }
+
+         function iniciar() {
+            document.getElementById("botonAnalizar").addEventListener("click", analizarTexto, false);
+            analizarTexto();
+         }
+
+         window.addEventListener("load", iniciar, false);
+      </script>
+   </head>
+   <body>
+      <h2>Ejercicio 11.23 - Análisis de textos (Incisos a, b y c)</h2>
+      <form action="#">
+         <p><label for="textoEntrada">Introduzca una o varias líneas de texto para analizar:</label></p>
+         <textarea id="textoEntrada">Ser o no ser: ese es el dilema:
+¿Qué es más noble para el espíritu?</textarea><br>
+         <input id="botonAnalizar" type="button" value="Analizar texto">
+      </form>
+      <div id="salida" class="contenedor-tablas"></div>
+   </body>
+</html>

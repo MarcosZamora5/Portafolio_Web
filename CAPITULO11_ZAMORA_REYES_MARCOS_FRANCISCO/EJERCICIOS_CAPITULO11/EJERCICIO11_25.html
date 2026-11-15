@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ejercicio 11.25 – Monto en letras</title>
+<style>
+  :root { color-scheme: light dark; --ac: #0b6e6e; --bd: color-mix(in srgb, CanvasText 25%, transparent); }
+  body { font: 16px/1.5 Georgia, serif; max-width: 760px; margin: 0 auto; padding: 1rem; }
+  h1 { font-size: 1.4rem; }
+  nav { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
+  button { font: inherit; padding: .4rem .8rem; border: 1px solid var(--bd); background: Canvas; color: CanvasText; border-radius: 6px; cursor: pointer; }
+  button.on, button.go { background: var(--ac); color: #fff; border-color: var(--ac); }
+  button:focus-visible, input:focus-visible { outline: 3px solid var(--ac); outline-offset: 2px; }
+  input { font: inherit; padding: .4rem; width: 100%; box-sizing: border-box; border: 1px solid var(--bd); border-radius: 6px; margin: .4rem 0; background: Canvas; color: CanvasText; }
+  section { display: none; } section.on { display: block; }
+  .out { padding: .6rem .8rem; border-left: 4px solid var(--ac); background: color-mix(in srgb, var(--ac) 10%, transparent); margin-top: .6rem; min-height: 1.5rem; }
+  table.cw { border-collapse: collapse; margin: .8rem 0; }
+  .cw td { width: 32px; height: 32px; border: 1px solid CanvasText; position: relative; text-align: center; font: bold 1rem monospace; padding: 0; }
+  .cw td.v { border: 0; }
+  .cw sup { position: absolute; top: 1px; left: 2px; font-size: .55rem; font-weight: normal; }
+  .scroll { overflow-x: auto; }
+</style>
+</head>
+<body>
+<h1>Ejercicio 11.25: Monto en letras</h1>
+<section class="on" id="s25" >
+  <p>Escribe un monto (hasta 999,999,999.99), por ejemplo <b>112.43</b>.</p>
+  <label for="monto">Monto del cheque</label>
+  <input id="monto" value="112.43" inputmode="decimal">
+  <button class="go" id="b25">Convertir</button>
+  <div class="out" id="o25"></div>
+</section>
+<script>
+/* ============ 11.25 Monto en letras ============ */
+const UNI = ["CERO","UNO","DOS","TRES","CUATRO","CINCO","SEIS","SIETE","OCHO","NUEVE","DIEZ","ONCE","DOCE","TRECE","CATORCE","QUINCE","DIECISÉIS","DIECISIETE","DIECIOCHO","DIECINUEVE","VEINTE","VEINTIUNO","VEINTIDÓS","VEINTITRÉS","VEINTICUATRO","VEINTICINCO","VEINTISÉIS","VEINTISIETE","VEINTIOCHO","VEINTINUEVE"];
+const DEC = ["","","","TREINTA","CUARENTA","CINCUENTA","SESENTA","SETENTA","OCHENTA","NOVENTA"];
+const CEN = ["","CIENTO","DOSCIENTOS","TRESCIENTOS","CUATROCIENTOS","QUINIENTOS","SEISCIENTOS","SETECIENTOS","OCHOCIENTOS","NOVECIENTOS"];
+
+function menorMil(n) {
+  if (n === 100) return "CIEN";
+  const c = Math.floor(n / 100), r = n % 100;
+  let s = CEN[c];
+  if (r) {
+    const resto = r < 30 ? UNI[r] : DEC[Math.floor(r / 10)] + (r % 10 ? " Y " + UNI[r % 10] : "");
+    s += (s ? " " : "") + resto;
+  }
+  return s;
+}
+const apocope = t => t.replace(/VEINTIUNO$/, "VEINTIÚN").replace(/UNO$/, "UN");
+
+function enLetras(n) {
+  if (n === 0) return "CERO";
+  const mill = Math.floor(n / 1e6), mil = Math.floor((n % 1e6) / 1000), resto = n % 1000;
+  const partes = [];
+  if (mill) partes.push(mill === 1 ? "UN MILLÓN" : apocope(menorMil(mill)) + " MILLONES");
+  if (mil) partes.push(mil === 1 ? "MIL" : apocope(menorMil(mil)) + " MIL");
+  if (resto) partes.push(menorMil(resto));
+  return partes.join(" ");
+}
+
+function montoEnLetras(texto) {
+  const x = parseFloat(String(texto).replace(/[$,\s]/g, ""));
+  if (isNaN(x) || x < 0 || x >= 1e9) return "Monto no válido.";
+  const centavos = Math.round(x * 100);
+  const entero = Math.floor(centavos / 100), cts = centavos % 100;
+  return enLetras(entero) + " CON " + String(cts).padStart(2, "0") + "/100";
+}
+document.getElementById("b25").onclick = () =>
+  document.getElementById("o25").textContent = montoEnLetras(document.getElementById("monto").value);
+</script>
+</body>
+</html>

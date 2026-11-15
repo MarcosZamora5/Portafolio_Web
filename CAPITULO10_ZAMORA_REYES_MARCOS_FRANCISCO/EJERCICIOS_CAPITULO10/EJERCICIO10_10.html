@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 10.10 - Comisiones de ventas</title>
+      <script>
+         var contadores = [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ];
+         var rangos = [
+            "a) $200 a 299", "b) $300 a 399", "c) $400 a 499",
+            "d) $500 a 599", "e) $600 a 699", "f) $700 a 799",
+            "g) $800 a 899", "h) $900 a 999", "i) $1000 y más"
+         ];
+
+         function registrarVenta() {
+            var campoVentas = document.getElementById("ventasBrutas");
+            var ventas = parseFloat(campoVentas.value);
+            if ( isNaN(ventas) || ventas < 0 ) return;
+
+            var salario = Math.floor( 200 + (ventas * 0.09) );
+            var indice = Math.floor( salario / 100 ) - 2;
+            if ( indice >= 8 ) {
+               indice = 8;
+            }
+            ++contadores[ indice ];
+            campoVentas.value = "";
+            mostrarTabla();
+         }
+
+         function mostrarTabla() {
+            var html = "<table border='1' cellpadding='6' style='border-collapse:collapse;'>" +
+               "<thead><tr><th>Rango de salario</th><th>Cantidad de vendedores</th></tr></thead><tbody>";
+            for ( var i = 0; i < contadores.length; ++i ) {
+               html += "<tr><td>" + rangos[ i ] + "</td><td>" + contadores[ i ] + "</td></tr>";
+            }
+            html += "</tbody></table>";
+            document.getElementById("salida").innerHTML = html;
+         }
+
+         function iniciar() {
+            document.getElementById("botonAgregar").addEventListener("click", registrarVenta, false);
+            mostrarTabla();
+         }
+         window.addEventListener("load", iniciar, false);
+      </script>
+   </head>
+   <body>
+      <h2>Ejercicio 10.10 - Comisiones de ventas</h2>
+      <form action="#">
+         <label>Ventas brutas del vendedor ($):
+            <input id="ventasBrutas" type="number" step="any" placeholder="Ej. 5000">
+         </label>
+         <input id="botonAgregar" type="button" value="Calcular y registrar">
+      </form>
+      <br>
+      <div id="salida"></div>
+   </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 10.16 - La criba de Eratóstenes</title>
+      <script>
+         function calcularPrimos() {
+            var primos = new Array( 1000 );
+
+            // a) Inicializar todos los elementos en 1 (true)
+            for ( var i = 0; i < primos.length; ++i ) {
+               primos[ i ] = 1;
+            }
+
+            // b) 0 y 1 no son primos
+            primos[ 0 ] = 0;
+            primos[ 1 ] = 0;
+
+            for ( var i = 2; i < primos.length; ++i ) {
+               if ( primos[ i ] === 1 ) {
+                  for ( var multiplo = i * 2; multiplo < primos.length; multiplo += i ) {
+                     primos[ multiplo ] = 0;
+                  }
+               }
+            }
+
+            var listaPrimos = [];
+            for ( var i = 2; i < primos.length; ++i ) {
+               if ( primos[ i ] === 1 ) {
+                  listaPrimos.push( i );
+               }
+            }
+
+            document.getElementById("salida").innerHTML =
+               "<p>Se encontraron <strong>" + listaPrimos.length + "</strong> números primos entre 1 y 999:</p>" +
+               "<p style='line-height:1.6;'>" + listaPrimos.join(", ") + "</p>";
+         }
+         window.addEventListener("load", calcularPrimos, false);
+      </script>
+   </head>
+   <body>
+      <h2>Ejercicio 10.16 - La Criba de Eratóstenes (Primos entre 1 y 999)</h2>
+      <div id="salida"></div>
+   </body>
+</html>

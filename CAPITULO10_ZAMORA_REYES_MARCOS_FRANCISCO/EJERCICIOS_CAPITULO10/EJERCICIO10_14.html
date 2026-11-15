@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 10.14 - Tiro de dos dados (36,000 veces)</title>
+      <script>
+         function simularTiros() {
+            var combinaciones = new Array( 7 );
+            for ( var i = 1; i <= 6; ++i ) {
+               combinaciones[ i ] = [ 0, 0, 0, 0, 0, 0, 0 ];
+            }
+            var frecuenciasSuma = new Array( 13 );
+            for ( var s = 2; s <= 12; ++s ) {
+               frecuenciasSuma[ s ] = 0;
+            }
+
+            var totalTiros = 36000;
+            for ( var t = 0; t < totalTiros; ++t ) {
+               var dado1 = Math.floor( 1 + Math.random() * 6 );
+               var dado2 = Math.floor( 1 + Math.random() * 6 );
+               var suma = dado1 + dado2;
+               ++combinaciones[ dado1 ][ dado2 ];
+               ++frecuenciasSuma[ suma ];
+            }
+
+            var html = "<h3>Frecuencia de cada suma (36,000 tiros)</h3>";
+            html += "<table border='1' cellpadding='5' style='border-collapse:collapse;'>" +
+               "<thead><tr><th>Suma</th><th>Frecuencia</th><th>Porcentaje real</th><th>Porcentaje esperado</th></tr></thead><tbody>";
+
+            var pesosEsperados = [ 0, 0, 1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1 ];
+            for ( var s = 2; s <= 12; ++s ) {
+               var porcReal = ( (frecuenciasSuma[ s ] / totalTiros) * 100 ).toFixed(2);
+               var porcEsp = ( (pesosEsperados[ s ] / 36) * 100 ).toFixed(2);
+               html += "<tr><td>" + s + "</td><td>" + frecuenciasSuma[ s ] + "</td><td>" + porcReal + "%</td><td>" + porcEsp + "%</td></tr>";
+            }
+            html += "</tbody></table>";
+
+            html += "<h3>Matriz bidimensional de combinaciones (Dado 1 vs Dado 2)</h3>";
+            html += "<table border='1' cellpadding='5' style='border-collapse:collapse;'><thead><tr><th>D1 \\ D2</th>";
+            for ( var c = 1; c <= 6; ++c ) html += "<th>" + c + "</th>";
+            html += "</tr></thead><tbody>";
+
+            for ( var f = 1; f <= 6; ++f ) {
+               html += "<tr><th>" + f + "</th>";
+               for ( var c = 1; c <= 6; ++c ) {
+                  html += "<td>" + combinaciones[ f ][ c ] + "</td>";
+               }
+               html += "</tr>";
+            }
+            html += "</tbody></table>";
+
+            document.getElementById("salida").innerHTML = html;
+         }
+         window.addEventListener("load", simularTiros, false);
+      </script>
+   </head>
+   <body>
+      <h2>Ejercicio 10.14 - Simulación de tiro de dos dados (36,000 tiros)</h2>
+      <div id="salida"></div>
+   </body>
+</html>

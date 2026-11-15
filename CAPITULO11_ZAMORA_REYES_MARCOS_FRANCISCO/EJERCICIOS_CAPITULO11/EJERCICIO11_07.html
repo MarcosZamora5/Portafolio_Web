@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 11.7 - Generador de enunciados</title>
+      <script>
+         var articulo = [ "el", "un", "algún", "ningún" ];
+         var sustantivo = [ "niño", "niña", "perro", "ciudad", "auto" ];
+         var verbo = [ "manejó", "saltó", "corrió", "caminó", "omitió" ];
+         var preposicion = [ "a", "desde", "encima de", "debajo de", "sobre" ];
+
+         function azar( arreglo ) {
+            return arreglo[ Math.floor( Math.random() * arreglo.length ) ];
+         }
+
+         function generarHistoria() {
+            var historia = "Había una vez...\n\n";
+            for ( var i = 0; i < 20; ++i ) {
+               var a1 = azar( articulo );
+               var primeraMayuscula = a1.charAt(0).toUpperCase() + a1.substring(1);
+               var enunciado = primeraMayuscula + " " +
+                  azar( sustantivo ) + " " +
+                  azar( verbo ) + " " +
+                  azar( preposicion ) + " " +
+                  azar( articulo ) + " " +
+                  azar( sustantivo ) + ".";
+               historia += (i + 1) + ". " + enunciado + "\n";
+            }
+            historia += "\nFIN";
+            document.getElementById("areaHistoria").value = historia;
+         }
+
+         function iniciar() {
+            document.getElementById("botonGenerar").addEventListener("click", generarHistoria, false);
+            generarHistoria();
+         }
+         window.addEventListener("load", iniciar, false);
+      </script>
+   </head>
+   <body>
+      <h2>Ejercicio 11.7 - Generación de 20 enunciados aleatorios</h2>
+      <p><input id="botonGenerar" type="button" value="Generar nueva historia"></p>
+      <textarea id="areaHistoria" rows="24" cols="75" readonly></textarea>
+   </body>
+</html>

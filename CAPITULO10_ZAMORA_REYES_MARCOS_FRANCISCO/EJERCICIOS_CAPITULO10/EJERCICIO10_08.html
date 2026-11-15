@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 10.8</title>
+      <script>
+         function iniciar() {
+            // a) Mostrar el valor del séptimo elemento del arreglo f (índice 6)
+            var f = [ 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 ];
+            var incisoA = "document.writeln( f[ 6 ] ); // Valor: " + f[ 6 ];
+
+            // b) Inicializar cada uno de los cinco elementos del arreglo unidimensional g en 8
+            var g = [ 8, 8, 8, 8, 8 ];
+
+            // c) Calcular el total de los elementos del arreglo c, que contiene 100 elementos numéricos
+            var c = new Array( 100 );
+            var totalC = 0;
+            for ( var i = 0; i < c.length; ++i ) {
+               c[ i ] = i + 1;
+               totalC += c[ i ];
+            }
+
+            // d) Copiar el arreglo a de 11 elementos en la primera porción del arreglo b, que contiene 34 elementos
+            var a = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ];
+            var b = new Array( 34 );
+            for ( var i = 0; i < a.length; ++i ) {
+               b[ i ] = a[ i ];
+            }
+
+            // e) Determinar e imprimir el valor más pequeño y el más grande contenido en el arreglo w de 99 elementos de punto flotante
+            var w = new Array( 99 );
+            for ( var i = 0; i < w.length; ++i ) {
+               w[ i ] = parseFloat((Math.random() * 100).toFixed(2));
+            }
+            var menor = w[ 0 ];
+            var mayor = w[ 0 ];
+            for ( var i = 1; i < w.length; ++i ) {
+               if ( w[ i ] < menor ) menor = w[ i ];
+               if ( w[ i ] > mayor ) mayor = w[ i ];
+            }
+
+            document.getElementById("salida").innerHTML =
+               "<p><strong>a)</strong> <code>" + incisoA + "</code></p>" +
+               "<p><strong>b)</strong> Arreglo <code>g</code> inicializado: <code>[" + g.join(", ") + "]</code></p>" +
+               "<p><strong>c)</strong> Total de los 100 elementos del arreglo <code>c</code>: <strong>" + totalC + "</strong></p>" +
+               "<p><strong>d)</strong> Primeros 11 elementos copiados en <code>b</code>: <code>[" + b.slice(0, 11).join(", ") + "]</code></p>" +
+               "<p><strong>e)</strong> En el arreglo <code>w</code> (99 flotantes) → Menor: <strong>" + menor + "</strong> | Mayor: <strong>" + mayor + "</strong></p>";
+         }
+         window.addEventListener("load", iniciar, false);
+      </script>
+   </head>
+   <body>
+      <h2>Ejercicio 10.8 - Instrucciones de JavaScript</h2>
+      <div id="salida"></div>
+   </body>
+</html>

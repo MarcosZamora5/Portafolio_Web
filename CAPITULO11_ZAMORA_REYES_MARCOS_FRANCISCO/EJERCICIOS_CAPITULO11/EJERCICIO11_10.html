@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 11.10 - Número telefónico</title>
+      <script>
+         function extraerTelefono() {
+            var entrada = document.getElementById("telefono").value;
+            // Formato esperado: (555)555-5555 o (555) 555-5555
+            var partesParentesis = entrada.split(")");
+            if (partesParentesis.length < 2) {
+               alert("Use el formato (555)555-5555");
+               return;
+            }
+            var codigoArea = partesParentesis[0].substring(1).trim();
+            var resto = partesParentesis[1].trim().split("-");
+            var primerosTres = resto[0] || "";
+            var ultimosCuatro = resto[1] || "";
+
+            document.getElementById("campoArea").value = codigoArea;
+            document.getElementById("campoNumero").value = primerosTres + "-" + ultimosCuatro;
+         }
+
+         function iniciar() {
+            document.getElementById("botonExtraer").addEventListener("click", extraerTelefono, false);
+         }
+         window.addEventListener("load", iniciar, false);
+      </script>
+   </head>
+   <body>
+      <h2>Ejercicio 11.10 - Extracción de número telefónico</h2>
+      <form action="#">
+         <p><label>Teléfono en formato (555)555-5555:
+            <input id="telefono" type="text" value="(555)555-5555"></label>
+            <input id="botonExtraer" type="button" value="Extraer tokens"></p>
+         <p><label>Código de área:
+            <input id="campoArea" type="text" readonly></label></p>
+         <p><label>Número telefónico (7 dígitos):
+            <input id="campoNumero" type="text" readonly></label></p>
+      </form>
+   </body>
+</html>

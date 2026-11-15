@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 11.17</title>
+      <script>
+         function convertirCodigo() {
+            var codigo = parseInt(document.getElementById("codigo").value);
+            if (!isNaN(codigo)) {
+               var caracter = String.fromCharCode(codigo);
+               document.getElementById("resultado").innerHTML =
+                  "El carácter para el código <strong>" + codigo + "</strong> es: <strong>" + caracter + "</strong>";
+            }
+         }
+
+         function iniciar() {
+            document.getElementById("btnConvertir").addEventListener("click", convertirCodigo, false);
+         }
+         window.addEventListener("load", iniciar, false);
+      </script>
+   </head>
+   <body>
+      <h2>Ejercicio 11.17 - Conversión de código ASCII/Unicode a carácter</h2>
+      <label>Código entero (ej. 65): <input id="codigo" type="number" value="65"></label>
+      <input id="btnConvertir" type="button" value="Mostrar carácter">
+      <p id="resultado"></p>
+   </body>
+</html>

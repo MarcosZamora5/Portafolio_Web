@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 11.9 - Latín Cerdo</title>
+      <script>
+         function imprimirPalabraEnLatin( palabra ) {
+            if ( palabra.length < 2 ) return palabra;
+            return palabra.substring( 1 ) + palabra.charAt( 0 ) + "ae";
+         }
+
+         function convertirFrase() {
+            var frase = document.getElementById("entradaFrase").value.trim();
+            if ( frase === "" ) return;
+
+            var tokens = frase.split( " " );
+            var traducidas = [];
+            for ( var i = 0; i < tokens.length; ++i ) {
+               if ( tokens[ i ] !== "" ) {
+                  traducidas.push( imprimirPalabraEnLatin( tokens[ i ] ) );
+               }
+            }
+
+            var area = document.getElementById("areaLatin");
+            area.value += traducidas.join( " " ) + "\n";
+         }
+
+         function iniciar() {
+            document.getElementById("btnConvertir").addEventListener("click", convertirFrase, false);
+         }
+         window.addEventListener("load", iniciar, false);
+      </script>
+   </head>
+   <body>
+      <h2>Ejercicio 11.9 - Codificador de español a Latín Cerdo</h2>
+      <form action="#">
+         <p>
+            <label>Frase en español:
+               <input id="entradaFrase" type="text" value="el perro salta la computadora">
+            </label>
+            <input id="btnConvertir" type="button" value="Traducir">
+         </p>
+         <textarea id="areaLatin" rows="8" cols="65" readonly></textarea>
+      </form>
+   </body>
+</html>

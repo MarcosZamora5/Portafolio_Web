@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 11.8 - Quintillas al azar</title>
+      <script>
+         var inicios = [ "Un alegre señor de", "Cierto joven viajero en", "Un curioso gatito de", "Un astuto pintor desde" ];
+         var rimasA = [ "canción", "balcón", "camión", "dragón", "melón", "rincón" ];
+         var rimasB = [ "caminar", "cantar", "saltar", "bailar", "soñar" ];
+         var puentes = [ "decidió muy temprano", "intentó sin descanso", "empezó de repente a", "se puso feliz a" ];
+
+         function azar( arr ) {
+            return arr[ Math.floor( Math.random() * arr.length ) ];
+         }
+
+         function crearQuintilla() {
+            var verso1 = azar( inicios ) + " un " + azar( rimasA ) + ",";
+            var verso2 = "saludó con humor desde el " + azar( rimasA ) + ";";
+            var verso3 = azar( puentes ) + " " + azar( rimasB ) + ",";
+            var verso4 = "y sin nunca parar de " + azar( rimasB ) + ",";
+            var verso5 = "terminó regresando a su " + azar( rimasA ) + ".";
+
+            document.getElementById("areaQuintilla").value =
+               verso1 + "\n" + verso2 + "\n" + verso3 + "\n" + verso4 + "\n" + verso5;
+         }
+
+         function iniciar() {
+            document.getElementById("btnQuintilla").addEventListener("click", crearQuintilla, false);
+            crearQuintilla();
+         }
+         window.addEventListener("load", iniciar, false);
+      </script>
+   </head>
+   <body>
+      <h2>Ejercicio 11.8 - Generador de Quintillas (Rima AABBA)</h2>
+      <p><input id="btnQuintilla" type="button" value="Generar quintilla"></p>
+      <textarea id="areaQuintilla" rows="8" cols="60" readonly></textarea>
+   </body>
+</html>

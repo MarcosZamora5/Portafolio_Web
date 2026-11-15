@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio de autoevaluación 10.4</title>
+      <script>
+         function iniciar() {
+            // a) Declarar y crear el arreglo con tres filas y tres columnas
+            var tabla = new Array( new Array( 3 ), new Array( 3 ), new Array( 3 ) );
+
+            // b) Almacenar el número total de elementos en totalElementos
+            var totalElementos = tabla.length * tabla[ 0 ].length;
+
+            // c) Usar for...in para inicializar cada elemento con la suma de sus índices
+            for ( var i = 0; i < 3; ++i ) {
+               for ( var j = 0; j < 3; ++j ) {
+                  tabla[ i ][ j ] = 0;
+               }
+            }
+            for ( var x in tabla ) {
+               for ( var y in tabla[ x ] ) {
+                  tabla[ x ][ y ] = parseInt( x ) + parseInt( y );
+               }
+            }
+
+            var html = "<p><strong>a)</strong> <code>var tabla = new Array( new Array( 3 ), new Array( 3 ), new Array( 3 ) );</code></p>";
+            html += "<p><strong>b)</strong> <code>var totalElementos = tabla.length * tabla[ 0 ].length;</code> (Total: <strong>" + totalElementos + "</strong>)</p>";
+            html += "<p><strong>c)</strong> Contenido del arreglo <code>tabla[x][y] = x + y</code>:</p>";
+            html += "<table border='1' cellpadding='6' style='border-collapse:collapse;'>";
+            for ( var x in tabla ) {
+               html += "<tr>";
+               for ( var y in tabla[ x ] ) {
+                  html += "<td>tabla[" + x + "][" + y + "] = " + tabla[ x ][ y ] + "</td>";
+               }
+               html += "</tr>";
+            }
+            html += "</table>";
+
+            document.getElementById("salida").innerHTML = html;
+         }
+         window.addEventListener("load", iniciar, false);
+      </script>
+   </head>
+   <body>
+      <h2>Ejercicio 10.4 - Arreglo bidimensional tabla</h2>
+      <div id="salida"></div>
+   </body>
+</html>

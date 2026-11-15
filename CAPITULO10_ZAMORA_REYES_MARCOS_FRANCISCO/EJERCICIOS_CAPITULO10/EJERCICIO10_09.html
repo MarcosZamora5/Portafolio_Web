@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 10.9</title>
+      <script>
+         function iniciar() {
+            // a) Declarar y crear el arreglo t de 2 por 3
+            var t = [ new Array( 3 ), new Array( 3 ) ];
+
+            // h) & i) Inicializar cada elemento en cero con for anidado
+            for ( var fila = 0; fila < t.length; ++fila ) {
+               for ( var col = 0; col < t[ fila ].length; ++col ) {
+                  t[ fila ][ col ] = 0;
+               }
+            }
+
+            // g) Establecer el elemento en fila 1 y columna 2 en cero
+            t[ 1 ][ 2 ] = 0;
+
+            // j) Determinar e imprimir el valor más pequeño en t
+            var minimo = t[ 0 ][ 0 ];
+            for ( var fila = 0; fila < t.length; ++fila ) {
+               for ( var col = 0; col < t[ fila ].length; ++col ) {
+                  if ( t[ fila ][ col ] < minimo ) {
+                     minimo = t[ fila ][ col ];
+                  }
+               }
+            }
+
+            // k) Instrucción sin repetición para mostrar elementos de la primera fila
+            var primeraFila = t[ 0 ][ 0 ] + " " + t[ 0 ][ 1 ] + " " + t[ 0 ][ 2 ];
+
+            // l) Formato tabular con índices de fila y columna
+            var tablaHTML = "<table border='1' cellpadding='6' style='border-collapse:collapse;'>" +
+               "<thead><tr><th>Fila / Col</th><th>0</th><th>1</th><th>2</th></tr></thead><tbody>";
+            for ( var fila = 0; fila < t.length; ++fila ) {
+               tablaHTML += "<tr><th>" + fila + "</th>";
+               for ( var col = 0; col < t[ fila ].length; ++col ) {
+                  tablaHTML += "<td>" + t[ fila ][ col ] + "</td>";
+               }
+               tablaHTML += "</tr>";
+            }
+            tablaHTML += "</tbody></table>";
+
+            document.getElementById("salida").innerHTML =
+               "<ol type='a'>" +
+               "<li><code>var t = [ new Array( 3 ), new Array( 3 ) ];</code></li>" +
+               "<li>¿Cuántas filas tiene t? <strong>2 filas</strong>.</li>" +
+               "<li>¿Cuántas columnas tiene t? <strong>3 columnas</strong>.</li>" +
+               "<li>¿Cuántos elementos tiene t? <strong>6 elementos</strong>.</li>" +
+               "<li>Elementos en la fila 1: <code>t[1][0]</code>, <code>t[1][1]</code>, <code>t[1][2]</code>.</li>" +
+               "<li>Elementos en la tercera columna (índice 2): <code>t[0][2]</code>, <code>t[1][2]</code>.</li>" +
+               "<li><code>t[ 1 ][ 2 ] = 0;</code></li>" +
+               "<li><code>t[0][0]=0; t[0][1]=0; t[0][2]=0; t[1][0]=0; t[1][1]=0; t[1][2]=0;</code></li>" +
+               "<li>Inicializado con <code>for</code> anidado en 0.</li>" +
+               "<li>Valor más pequeño en <code>t</code>: <strong>" + minimo + "</strong></li>" +
+               "<li>Primera fila sin repetición: <code>" + primeraFila + "</code></li>" +
+               "<li>Impresión tabular de <code>t</code>:<br><br>" + tablaHTML + "</li>" +
+               "</ol>";
+         }
+         window.addEventListener("load", iniciar, false);
+      </script>
+   </head>
+   <body>
+      <h2>Ejercicio 10.9 - Arreglo bidimensional t (2 × 3)</h2>
+      <div id="salida"></div>
+   </body>
+</html>

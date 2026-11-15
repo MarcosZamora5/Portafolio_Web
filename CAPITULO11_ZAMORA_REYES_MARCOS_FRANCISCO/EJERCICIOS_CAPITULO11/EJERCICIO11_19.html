@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 11.19 - Mi propio indexOf</title>
+      <script>
+         function miIndexOf(cadena, subcadena, inicio) {
+            var posInicio = inicio ? parseInt(inicio) : 0;
+            if (posInicio < 0) posInicio = 0;
+            if (subcadena.length === 0) return posInicio;
+
+            for (var i = posInicio; i <= cadena.length - subcadena.length; ++i) {
+               var coincide = true;
+               for (var j = 0; j < subcadena.length; ++j) {
+                  if (cadena.charAt(i + j) !== subcadena.charAt(j)) {
+                     coincide = false;
+                     break;
+                  }
+               }
+               if (coincide) return i;
+            }
+            return -1;
+         }
+
+         function probarBusqueda() {
+            var texto = document.getElementById("texto").value;
+            var buscar = document.getElementById("buscar").value;
+            var indice = miIndexOf(texto, buscar, 0);
+
+            document.getElementById("salida").innerHTML =
+               "<p>Resultado con <code>miIndexOf</code>: <strong>" + indice + "</strong></p>";
+         }
+
+         function iniciar() {
+            document.getElementById("boton").addEventListener("click", probarBusqueda, false);
+         }
+         window.addEventListener("load", iniciar, false);
+      </script>
+   </head>
+   <body>
+      <h2>Ejercicio 11.19 - Versión propia de String indexOf</h2>
+      <form action="#">
+         <p><label>Cadena principal: <input id="texto" type="text" value="programacion en javascript"></label></p>
+         <p><label>Subcadena a buscar: <input id="buscar" type="text" value="java"></label>
+            <input id="boton" type="button" value="Buscar con miIndexOf"></p>
+      </form>
+      <div id="salida"></div>
+   </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 11.5 - Redondeo con Math.round</title>
+      <script>
+         function redondearAEntero( numero ) {
+            return Math.round( numero );
+         }
+         function redondearADecimas( numero ) {
+            return Math.round( numero * 10 ) / 10;
+         }
+         function redondearACentesimas( numero ) {
+            return Math.round( numero * 100 ) / 100;
+         }
+         function redondearAMilesimas( numero ) {
+            return Math.round( numero * 1000 ) / 1000;
+         }
+
+         function procesar() {
+            var x = parseFloat( document.getElementById("entrada").value );
+            if ( isNaN(x) ) return;
+
+            document.getElementById("salida").innerHTML =
+               "<p>Valor original: <strong>" + x + "</strong></p>" +
+               "<ul>" +
+               "<li>Redondeado al entero más cercano (<code>Math.round</code>): <strong>" + redondearAEntero(x) + "</strong></li>" +
+               "<li>Redondeado a la décima más cercana (<code>Math.round</code>): <strong>" + redondearADecimas(x) + "</strong></li>" +
+               "<li>Redondeado a la centésima más cercana (<code>Math.round</code>): <strong>" + redondearACentesimas(x) + "</strong></li>" +
+               "<li>Redondeado a la milésima más cercana (<code>Math.round</code>): <strong>" + redondearAMilesimas(x) + "</strong></li>" +
+               "</ul>";
+         }
+
+         function iniciar() {
+            document.getElementById("botonRedondear").addEventListener("click", procesar, false);
+            procesar();
+         }
+         window.addEventListener("load", iniciar, false);
+      </script>
+   </head>
+   <body>
+      <h2>Ejercicio 11.5 - Redondear un número usando Math.round</h2>
+      <form action="#">
+         <label>Número decimal:
+            <input id="entrada" type="number" step="any" value="12.34567">
+         </label>
+         <input id="botonRedondear" type="button" value="Redondear">
+      </form>
+      <div id="salida"></div>
+   </body>
+</html>

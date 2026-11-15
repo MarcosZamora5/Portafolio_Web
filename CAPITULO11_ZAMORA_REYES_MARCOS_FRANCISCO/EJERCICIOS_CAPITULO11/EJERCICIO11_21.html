@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="utf-8">
+   <title>Ejercicio 11.21</title>
+   <script>
+      function generarCombinaciones() {
+         var palabra = document.getElementById("palabra").value.trim();
+         if (palabra.length !== 5) {
+            alert("Introduce exactamente una palabra de 5 letras.");
+            return;
+         }
+
+         var resultado = [];
+         for (var i = 0; i < 5; i++) {
+            for (var j = 0; j < 5; j++) {
+               for (var k = 0; k < 5; k++) {
+                  if (i !== j && i !== k && j !== k) {
+                     resultado.push(palabra.charAt(i) + palabra.charAt(j) + palabra.charAt(k));
+                  }
+               }
+            }
+         }
+         document.getElementById("area").value = resultado.join("\n");
+      }
+
+      window.addEventListener("load", function() {
+         document.getElementById("btn").addEventListener("click", generarCombinaciones, false);
+      }, false);
+   </script>
+</head>
+<body>
+   <h2>Ejercicio 11.21 - Combinaciones de 3 letras</h2>
+   <p>Palabra de 5 letras: <input id="palabra" type="text" maxlength="5" value="trigo">
+      <input id="btn" type="button" value="Generar"></p>
+   <textarea id="area" rows="12" cols="30"></textarea>
+</body>
+</html>

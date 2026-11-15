@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 11.11</title>
+      <script>
+         function invertirPalabras() {
+            var texto = document.getElementById("lineaTexto").value;
+            var tokens = texto.trim().split(" ");
+            var invertido = tokens.reverse().join(" ");
+            document.getElementById("salida").innerHTML = "<p><strong>Orden inverso:</strong> " + invertido + "</p>";
+         }
+         function iniciar() {
+            document.getElementById("btnInvertir").addEventListener("click", invertirPalabras, false);
+         }
+         window.addEventListener("load", iniciar, false);
+      </script>
+   </head>
+   <body>
+      <h2>Ejercicio 11.11 - Tokens en orden inverso</h2>
+      <form action="#">
+         <input id="lineaTexto" type="text" size="50" value="Ingeniería en Sistemas Computacionales ITSX">
+         <input id="btnInvertir" type="button" value="Invertir">
+      </form>
+      <div id="salida"></div>
+   </body>
+</html>

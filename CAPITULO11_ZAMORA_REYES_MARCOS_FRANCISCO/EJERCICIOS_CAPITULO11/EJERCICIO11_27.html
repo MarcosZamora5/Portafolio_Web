@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ejercicio 11.27 – Corrector ortográfico</title>
+<style>
+  :root { color-scheme: light dark; --ac: #0b6e6e; --bd: color-mix(in srgb, CanvasText 25%, transparent); }
+  body { font: 16px/1.5 Georgia, serif; max-width: 760px; margin: 0 auto; padding: 1rem; }
+  h1 { font-size: 1.4rem; }
+  nav { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
+  button { font: inherit; padding: .4rem .8rem; border: 1px solid var(--bd); background: Canvas; color: CanvasText; border-radius: 6px; cursor: pointer; }
+  button.on, button.go { background: var(--ac); color: #fff; border-color: var(--ac); }
+  button:focus-visible, input:focus-visible { outline: 3px solid var(--ac); outline-offset: 2px; }
+  input { font: inherit; padding: .4rem; width: 100%; box-sizing: border-box; border: 1px solid var(--bd); border-radius: 6px; margin: .4rem 0; background: Canvas; color: CanvasText; }
+  section { display: none; } section.on { display: block; }
+  .out { padding: .6rem .8rem; border-left: 4px solid var(--ac); background: color-mix(in srgb, var(--ac) 10%, transparent); margin-top: .6rem; min-height: 1.5rem; }
+  table.cw { border-collapse: collapse; margin: .8rem 0; }
+  .cw td { width: 32px; height: 32px; border: 1px solid CanvasText; position: relative; text-align: center; font: bold 1rem monospace; padding: 0; }
+  .cw td.v { border: 0; }
+  .cw sup { position: absolute; top: 1px; left: 2px; font-size: .55rem; font-weight: normal; }
+  .scroll { overflow-x: auto; }
+</style>
+</head>
+<body>
+<h1>Ejercicio 11.27: Corrector ortográfico</h1>
+<section class="on" id="s27">
+  <p>Escribe una palabra. Prueba "predeterminado", "predetreminado", "prederterminado" o "utill".</p>
+  <label for="pal">Palabra</label>
+  <input id="pal" value="predetreminado">
+  <button class="go" id="b27">Revisar</button>
+  <div class="out" id="o27"></div>
+  <p><small>Diccionario actual: <span id="dic"></span></small></p>
+</section>
+<script>
+/* ============ 11.27 Corrector ortográfico ============ */
+const listaDePalabras = ["predeterminado","útil","cumpleaños","programa","computadora","teclado","pantalla","cadena","arreglo",
+  "palabra","diccionario","corrector","ortográfico","función","variable","ciclo","objeto","método","cheque","letra"];
+document.getElementById("dic").textContent = listaDePalabras.join(", ");
+const ALFABETO = "abcdefghijklmnñopqrstuvwxyzáéíóúü";
+
+function candidatas(p) {
+  const c = new Set();
+  for (let i = 0; i < p.length; i++) {
+    if (i < p.length - 1) c.add(p.slice(0, i) + p[i + 1] + p[i] + p.slice(i + 2));   // transposición
+    if (p[i] === p[i + 1]) c.add(p.slice(0, i) + p.slice(i + 1));                     // letra doble de más
+    c.add(p.slice(0, i) + p.slice(i + 1));                                            // letra de más
+    c.add(p.slice(0, i) + p[i] + p[i] + p.slice(i + 1));                              // falta letra doble
+    for (const l of ALFABETO) {
+      c.add(p.slice(0, i) + l + p.slice(i));                                          // letra faltante
+      c.add(p.slice(0, i) + l + p.slice(i + 1));                                      // letra equivocada
+    }
+  }
+  for (const l of ALFABETO) c.add(p + l);
+  c.delete(p);
+  return [...c];
+}
+function revisar(palabra) {
+  const p = palabra.trim().toLowerCase();
+  if (!p) return "Escribe una palabra.";
+  if (listaDePalabras.includes(p)) return "La palabra está escrita correctamente.";
+  let msg = "La palabra no está escrita correctamente.";
+  const sug = candidatas(p).filter(x => listaDePalabras.includes(x));
+  if (sug.length) msg += " " + sug.map(s => `¿Quiso decir "${s}"?`).join(" ");
+  return msg;
+}
+document.getElementById("b27").onclick = () =>
+  document.getElementById("o27").textContent = revisar(document.getElementById("pal").value);
+</script>
+</body>
+</html>

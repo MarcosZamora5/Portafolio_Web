@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 11.24 - Formato con asteriscos</title>
+      <script>
+         function formatearCantidad() {
+            var entrada = document.getElementById("campoMonto").value.trim();
+            if (entrada === "") return;
+
+            var espaciosTotales = 9;
+            var faltantes = espaciosTotales - entrada.length;
+            var protegido = "";
+
+            if (faltantes > 0) {
+               for (var i = 0; i < faltantes; ++i) {
+                  protegido += "*";
+               }
+               protegido += entrada;
+            } else {
+               protegido = entrada.substring(0, espaciosTotales);
+            }
+
+            var salida = protegido + "\n---------\n123456789";
+            document.getElementById("resultado").innerHTML = "<pre style='font-size:18px;'>" + salida + "</pre>";
+         }
+
+         function iniciar() {
+            document.getElementById("botonFormatear").addEventListener("click", formatearCantidad, false);
+            formatearCantidad();
+         }
+         window.addEventListener("load", iniciar, false);
+      </script>
+   </head>
+   <body>
+      <h2>Ejercicio 11.24 - Formato de 9 espacios con asteriscos</h2>
+      <form action="#">
+         <label>Cantidad a formatear (máx. 9 caracteres):
+            <input id="campoMonto" type="text" value="99.87">
+         </label>
+         <input id="botonFormatear" type="button" value="Aplicar formato">
+      </form>
+      <div id="resultado"></div>
+   </body>
+</html>

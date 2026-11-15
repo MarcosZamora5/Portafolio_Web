@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Ejercicio 11.22 - Impresión de fechas en varios formatos</title>
+      <script>
+         function mostrarFormatos() {
+            var entrada = document.getElementById("campoFecha").value;
+            var fecha = entrada ? new Date(entrada + "T12:00:00") : new Date();
+
+            var html = "<ul>" +
+               "<li><strong>toString():</strong> " + fecha.toString() + "</li>" +
+               "<li><strong>toLocaleString():</strong> " + fecha.toLocaleString() + "</li>" +
+               "<li><strong>toDateString():</strong> " + fecha.toDateString() + "</li>" +
+               "<li><strong>toLocaleDateString():</strong> " + fecha.toLocaleDateString() + "</li>" +
+               "<li><strong>toUTCString():</strong> " + fecha.toUTCString() + "</li>" +
+               "<li><strong>toISOString():</strong> " + fecha.toISOString() + "</li>" +
+               "</ul>";
+
+            document.getElementById("salida").innerHTML = html;
+         }
+
+         function iniciar() {
+            document.getElementById("botonConvertir").addEventListener("click", mostrarFormatos, false);
+            mostrarFormatos();
+         }
+         window.addEventListener("load", iniciar, false);
+      </script>
+   </head>
+   <body>
+      <h2>Ejercicio 11.22 - Impresión de fechas en varios formatos</h2>
+      <form action="#">
+         <label>Seleccione una fecha:
+            <input id="campoFecha" type="date">
+         </label>
+         <input id="botonConvertir" type="button" value="Mostrar formatos">
+      </form>
+      <div id="salida"></div>
+   </body>
+</html>

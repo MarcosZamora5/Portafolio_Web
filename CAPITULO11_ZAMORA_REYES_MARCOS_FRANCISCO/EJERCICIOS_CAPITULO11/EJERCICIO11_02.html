@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="utf-8">
+   <title>Ejercicio 11.2 - Alertas con Objeto Date</title>
+   <script>
+      function mostrarFecha(tipo) {
+         var fecha = new Date();
+         if (tipo === "ayer") {
+            fecha.setHours(fecha.getHours() - 24);
+         } else if (tipo === "diezAnios") {
+            fecha.setFullYear(fecha.getFullYear() - 10);
+         } else if (tipo === "unaSemana") {
+            fecha.setDate(fecha.getDate() + 7);
+         }
+         alert(fecha.toLocaleString());
+      }
+
+      function iniciar() {
+         document.getElementById("btnAhora").addEventListener("click", function(){ mostrarFecha("ahora"); }, false);
+         document.getElementById("btnAyer").addEventListener("click", function(){ mostrarFecha("ayer"); }, false);
+         document.getElementById("btnDiez").addEventListener("click", function(){ mostrarFecha("diezAnios"); }, false);
+         document.getElementById("btnSemana").addEventListener("click", function(){ mostrarFecha("unaSemana"); }, false);
+      }
+      window.addEventListener("load", iniciar, false);
+   </script>
+</head>
+<body>
+   <h2>Ejercicio 11.2 - Fechas relativas a la hora actual</h2>
+   <input id="btnAhora" type="button" value="Ahora">
+   <input id="btnAyer" type="button" value="Ayer (-24 horas)">
+   <input id="btnDiez" type="button" value="Hace 10 años">
+   <input id="btnSemana" type="button" value="En una semana (+7 días)">
+</body>
+</html>
